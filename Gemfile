@@ -67,3 +67,6 @@ end
 
 # hamlの導入
 gem "haml-rails", ">= 1.0", '<= 2.0.1'
+
+# FontAwesomeの導入
+gem 'font-awesome-sass'
