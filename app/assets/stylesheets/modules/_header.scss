@@ -1,0 +1,24 @@
+// トップページのヘッダー
+.Header {
+  height: 100px;
+  padding: 0 60px;
+
+  // トップページのインフォメーション
+  &__info {
+    width: 100%;
+    padding: 15px 0 0;
+    margin: 0 auto;
+    // トップページのメイン
+    &__main {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+    }
+
+    // トップページのナビゲーションバー
+    &__nav {
+
+    }
+  }
+}
