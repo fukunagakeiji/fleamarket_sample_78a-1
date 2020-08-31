@@ -1,11 +1,26 @@
 // トップページのヘッダー
 .Header
-  // トップページのインフォメーション
+  // トップページのヘッダーのインフォメーション
   .Header__info
-    = image_tag "logo/logo.png", alt: "ロゴ", class: "top-logo"
+    // トップページのヘッダーのFURIMAロゴ
+    .Header__info__inner
+      = image_tag "logo/logo.png", alt: "ヘッダーロゴ", class: "top-logo"
 
-    // トップページのメイン
-    .Header__info__main
+    // トップページのヘッダーの検索ボックス
+    .Header__info__search
+      // form_withの引数はあとでモデル名に変更
+      = form_with url: root_path, html: {class: "Form"}, local: true do |f|
+        .Form__contents
+          = f.text_field :content, class: "Form__contents__text", placeholder: "キーワードから探す"
+          = f.submit "icon/icon-search 1.png", class: "Form__contents__btn"
 
-    // トップページのナビゲーションバー
-    .Header__info__nav
+    // トップページのヘッダーのナビゲーションバー
+  .Header__nav
+    %ul.ListLeft
+      %li.ListLeft__item--first カテゴリー
+      %li.ListLeft__item ブランド
+
+
+    %ul.ListRight
+      %li.ListRight__item--login ログイン
+      %li.ListRight__item--new 新規会員登録

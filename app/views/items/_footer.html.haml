@@ -1,3 +1,28 @@
 // トップページのフッター 
 .Footer
-  %p footer
+  %ul.Contents
+    %li.Content
+      %h2.Content__head FURIMAについて
+      %ul.Content__category
+        %li 会社概要（運営会社）
+        %li プライバシーポリシー
+        %li FURIMA利用規約
+        %li ポイントに関する特約
+    
+    %li.Content
+      %h2.Content__head FURIMAを見る
+      %ul.Content__category
+        %li カテゴリー一覧
+        %li ブランド一覧
+    
+
+    %li.Content
+      %h2.Content__head ヘルプ&ガイド
+      %ul.Content__category
+        %li FURIMAガイド
+        %li FURIMAロゴ利用ガイドライン
+        %li お知らせ
+
+  .Footer__logo
+    = image_tag "logo/logo-white.png", alt: "フッターロゴ", class: "Footer__logo--image"
+    %p.Footer__logo--text © FURIMA

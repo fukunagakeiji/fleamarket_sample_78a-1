@@ -1,5 +1,17 @@
 // トップページのメイン
 .Main {
   height: calc(100vh - 300px);
-  background-color: blue;
+
+  &__visual {
+    height: 560px;
+    background-image: url("pict/bg-mainVisual-pict_pc.jpg");
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    position: relative;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+  }
 }
