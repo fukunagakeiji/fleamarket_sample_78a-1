@@ -36,3 +36,24 @@
     }
   }
 }
+
+.Sell {
+  width: 120px;
+  background: #3ccace;
+  text-align: center;
+  border-radius: 4%;
+  right: 32px;
+  //position: fixed;
+  //z-index: 100;
+  padding: 15px;
+  &__text {
+    color: #fff;
+    display: block;
+    font-size: 18px;
+    text-decoration: none;
+    margin-bottom: 5px;
+  }
+  &__camera {
+    width: 60%;
+  }
+}

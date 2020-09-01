@@ -26,3 +26,8 @@
   .Footer__logo
     = image_tag "logo/logo-white.png", alt: "フッターロゴ", class: "Footer__logo--image"
     %p.Footer__logo--text © FURIMA
+
+// 出品する（カメラ画像のアイコン）
+.Sell
+  %p.Sell__text 出品する
+  = link_to image_tag("icon/icon_camera.png", alt: "出品する", class: "Sell__camera")

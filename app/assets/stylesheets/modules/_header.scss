@@ -5,58 +5,61 @@
 
   // トップページのヘッダーのインフォメーション
   &__info {
+    max-width: 1040px;
     width: 100%;
     padding: 15px 0 0;
     margin: 0 auto;
-    display: flex;
-    
-    .top-logo {
-      height: 40px;
-      margin-right: 30px;
-    }
-    
-    // トップページのヘッダーの検索ボックス
-    &__search {
-      width: calc(100% - 26px);
-      margin-top: auto;
-    }
-
-    .Form__contents {
+    &__title {
       display: flex;
-      &__text {
+      &__inner {
+        .top-logo {
+          height: 40px;
+          margin-right: 30px;
+        }
+      }
+      // トップページのヘッダーの検索ボックス
+      &__search {
         width: calc(100% - 26px);
+        margin-top: auto;
       }
-      &__btn {
-        width: 36px;
-        border: 0;
-        cursor: pointer;
-        background-color: #3ccace;
-        padding: 8px;
-      }
-    }
-  }
 
-  // トップページのヘッダーのナビゲーションバー
-  &__nav {
-    height: 20px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    margin-top: 10px;
-    .ListLeft {
-      display: flex;
-      justify-content: space-between;
-      &__item {
-        &--first {
-          padding-right: 30px;
+      .Form__contents {
+        display: flex;
+        &__text {
+          width: calc(100% - 26px);
+        }
+        &__btn {
+          width: 36px;
+          border: 0;
+          cursor: pointer;
+          background-color: #3ccace;
+          padding: 8px;
         }
       }
     }
-    .ListRight {
+    // トップページのヘッダーのナビゲーションバー
+    &__nav {
+      max-width: 1040px;
+      height: 20px;
       display: flex;
-      &__item {
-        &--login {
-          padding-right: 30px;
+      justify-content: space-between;
+      font-size: 14px;
+      margin: 10px;
+      .ListLeft {
+        display: flex;
+        justify-content: space-between;
+        &__item {
+          &--first {
+            padding-right: 30px;
+          }
+        }
+      }
+      .ListRight {
+        display: flex;
+        &__item {
+          &--login {
+            padding-right: 30px;
+          }
         }
       }
     }
