@@ -1,3 +1,68 @@
 // トップページのメイン
 .Main
+  // トップページ画像（人生を変えるフリマアプリ）
   .Main__visual
+    .Main__visual__content
+      %h2.Main__visual__content__subtitle
+        人生を変えるフリマアプリ
+      %p.Main__visual__content__text
+        FURIMAはだれでもかんたんに出品・購入できる
+        %br
+        フリマアプリです
+      .Main__visual__content__btn
+        = link_to image_tag("icon/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg", alt: "App-Store", class: "AppStore")
+        = link_to image_tag("icon/google-play-badge.png", alt: "Google-Play", class: "GooglePlay")
+
+  // FURIMAが選ばれる3つの理由
+  .Main__introduction
+    %h2.Main__introduction__subtitle
+      FURIMAが選ばれる3つの理由
+      
+    %ul.Main__introduction__lists
+      // 3分ですぐに出品
+      %li.Main__introduction__lists__list
+        .Main__introduction__lists__list__pict
+          %span.Main__introduction__lists__list__pict__number 1
+          = image_tag("pict/pict-reason-01.jpg", alt: "3分ですぐに出品", class: "Main__introduction__lists__list__pict__picture")
+
+        %h3.Main__introduction__lists__list__text
+          %span 3分
+          ですぐに出品
+        %p.Main__introduction__lists__list__description
+          スマホで入力するだけで簡単に出品できる！
+
+      // シンプルで使いやすい
+      %li.Main__introduction__lists__list
+        .Main__introduction__lists__list__pict
+          %span.Main__introduction__lists__list__pict__number 2
+          = image_tag("pict/pict-reason-02.jpg", alt: "シンプルで使いやすい", class: "Main__introduction__lists__list__pict__picture")
+
+        %h3.Main__introduction__lists__list__text
+          %span シンプル
+          で使いやすい
+        %p.Main__introduction__lists__list__description
+          めんどくさい入力は必要なく、検索購入もスムーズ！
+
+      // 手数料業界最安
+      %li.Main__introduction__lists__list
+        .Main__introduction__lists__list__pict
+          %span.Main__introduction__lists__list__pict__number 3
+          = image_tag("pict/pict-reason-03.jpg", alt: "手数料業界最安", class: "Main__introduction__lists__list__pict__picture")
+        %h3.Main__introduction__lists__list__text
+          手数料
+          %span 業界最安
+        %p.Main__introduction__lists__list__description
+          最大３％でお得に出品＆購入！
+
+
+  // 会員数日本一位
+  .Main__middle
+
+  // FURIMAの特徴
+  .Main__feature
+
+  // ピックアップカテゴリー
+  .Main__container
+
+  // ピックアップブランド
+  .Main__container
