@@ -57,12 +57,126 @@
 
   // 会員数日本一位
   .Main__middle
+    .Main__middle__inner
+      %h2.Main__middle__inner__subtitle
+        会員数日本一位
+      %p.Main__middle__inner__text
+        FURIMAは、フリマアプリで最も人気。
+        %br
+        出品・購入回数も業界最多です！
+        %br
+        ほしかったあの商品に出会えるかもしれません。
+      .Main__middle__inner__btn
+        = link_to image_tag("icon/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg", alt: "App-Store", class: "AppStore")
+        = link_to image_tag("icon/google-play-badge.png", alt: "Google-Play", class: "GooglePlay")
+
 
   // FURIMAの特徴
   .Main__feature
+    .Main__feature__head
+      FURIMAの特徴
+    .Main__feature__items
+      .Main__feature__items__item
+        .Main__feature__items__item__img
+          = image_tag("icon/icon-01.png", alt: "簡単に売り買いできる", class: "Main__feature__items__item__img__icon")
+        %h3.Main__feature__items__item__subtitle
+          簡単に売り買いできる
+        %p.Main__feature__items__item__detail
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      .Main__feature__items__item
+        .Main__feature__items__item__img
+          = image_tag("icon/icon-03.png", alt: "売上金は即日振り込みに対応", class: "Main__feature__items__item__img__icon")
+        %h3.Main__feature__items__item__subtitle
+          売上金は即日振り込みに対応
+        %p.Main__feature__items__item__detail
+          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします！
+
+      .Main__feature__items__item
+        .Main__feature__items__item__img
+          = image_tag("icon/icon-04.png", alt: "様々な支払いに対応", class: "Main__feature__items__item__img__icon")
+        %h3.Main__feature__items__item__subtitle
+          様々な支払いに対応
+        %p.Main__feature__items__item__detail
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+
 
   // ピックアップカテゴリー
   .Main__container
+    %h2.Main__container__head
+      ピップアップカテゴリー
+    .Main__container__productBox
+      .Main__container__productBox__productHead
+        = link_to root_path, class: "Main__container__productBox__productHead--link" do
+          %h3.Main__container__productBox__productHead--title
+            新規投稿商品
+            
+      .Main__container__productBox__productLists
+        .Main__container__productBox__productLists__list
+          = link_to root_path, class: "Main__container__productBox__productLists__list__image" do
+            -# .Main__container__productBox__productLists__list__image__img
+            -#   = image_tag("pict/mgg-vitchakorn-98Xi5vMGKck-unsplash.jpg", alt: "パスタ", class: "Main__container__productBox__productLists__list__image__img--picture")
+            -# -# .Main__container__productBoc__productLists__list--body
+            -#   %h3.name
+            -#   .details
+            -#   %ul
+            -#     %li
+            -#     %li
+            -#      = icon("fa", "fa-star")
+            -#   %p
+            -#   税込み
+        -# .Main__container__productBox__productLists__list
+        -#   = link_to root_path do
+        -#     .Main__container__productBoc__productLists__list--img
+        -#       = image_tag("")
+        -#     .Main__container__productBoc__productLists__list--body
+        -#       %h3.name
+        -#       .details
+        -#       %ul
+        -#         %li
+        -#         %li
+        -#          = icon("fa", "fa-star", "likeIcon")
+        -#       %p
+        -#       税込み
+        -# .Main__container__productBox__productLists__list
+        -#   = link_to root_path do
+        -#     .Main__container__productBoc__productLists__list--img
+        -#       = image_tag("")
+        -#     .Main__container__productBoc__productLists__list--body
+        -#       %h3.name
+        -#       .details
+        -#       %ul
+        -#         %li
+        -#         %li
+        -#          = icon("fa", "fa-star", "likeIcon")
+        -#       %p
+        -#       税込み
+        -# .Main__container__productBox__productLists__list
+        -#   = link_to root_path do
+        -#     .Main__container__productBoc__productLists__list--img
+        -#       = image_tag("")
+        -#     .Main__container__productBoc__productLists__list--body
+        -#       %h3.name
+        -#       .details
+        -#       %ul
+        -#         %li
+        -#         %li
+        -#          = icon("fa", "fa-star", "likeIcon")
+        -#       %p
+        -#       税込み
+        -# .Main__container__productBox__productLists__list
+        -#   = link_to root_path do
+        -#     .Main__container__productBoc__productLists__list--img
+        -#       = image_tag("")
+        -#     .Main__container__productBoc__productLists__list--body
+        -#       %h3.name
+        -#       .details
+        -#       %ul
+        -#         %li
+        -#         %li
+        -#          = icon("fa", "fa-star", "likeIcon")
+        -#       %p
+        -#       税込み
+
 
   // ピックアップブランド
   .Main__container

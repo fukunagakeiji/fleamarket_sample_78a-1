@@ -42,9 +42,9 @@
   background: #3ccace;
   text-align: center;
   border-radius: 4%;
+  position: fixed;
+  bottom: 32px;
   right: 32px;
-  //position: fixed;
-  //z-index: 100;
   padding: 15px;
   &__text {
     color: #fff;
