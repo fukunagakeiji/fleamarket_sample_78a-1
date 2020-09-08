@@ -1,0 +1,293 @@
+// トップページのメイン
+.Main
+  // トップページ画像（人生を変えるフリマアプリ）
+  .Main__visual
+    .Main__visual__content
+      %h2.Main__visual__content__subtitle
+        人生を変えるフリマアプリ
+      %p.Main__visual__content__text
+        FURIMAはだれでもかんたんに出品・購入できる
+        %br
+        フリマアプリです
+      .Main__visual__content__btn
+        = link_to image_tag("icon/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg", alt: "App-Store", class: "AppStore")
+        = link_to image_tag("icon/google-play-badge.png", alt: "Google-Play", class: "GooglePlay")
+
+  // FURIMAが選ばれる3つの理由
+  .Main__introduction
+    %h2.Main__introduction__subtitle
+      FURIMAが選ばれる3つの理由
+      
+    %ul.Main__introduction__lists
+      // 3分ですぐに出品
+      %li.Main__introduction__lists__list
+        .Main__introduction__lists__list__pict
+          %span.Main__introduction__lists__list__pict__number 1
+          = image_tag("pict/pict-reason-01.jpg", alt: "3分ですぐに出品", class: "Main__introduction__lists__list__pict__picture")
+
+        %h3.Main__introduction__lists__list__text
+          %span 3分
+          ですぐに出品
+        %p.Main__introduction__lists__list__description
+          スマホで入力するだけで簡単に出品できる！
+
+      // シンプルで使いやすい
+      %li.Main__introduction__lists__list
+        .Main__introduction__lists__list__pict
+          %span.Main__introduction__lists__list__pict__number 2
+          = image_tag("pict/pict-reason-02.jpg", alt: "シンプルで使いやすい", class: "Main__introduction__lists__list__pict__picture")
+
+        %h3.Main__introduction__lists__list__text
+          %span シンプル
+          で使いやすい
+        %p.Main__introduction__lists__list__description
+          めんどくさい入力は必要なく、検索購入もスムーズ！
+
+      // 手数料業界最安
+      %li.Main__introduction__lists__list
+        .Main__introduction__lists__list__pict
+          %span.Main__introduction__lists__list__pict__number 3
+          = image_tag("pict/pict-reason-03.jpg", alt: "手数料業界最安", class: "Main__introduction__lists__list__pict__picture")
+        %h3.Main__introduction__lists__list__text
+          手数料
+          %span 業界最安
+        %p.Main__introduction__lists__list__description
+          最大３％でお得に出品＆購入！
+
+
+  // 会員数日本一位
+  .Main__middle
+    .Main__middle__inner
+      %h2.Main__middle__inner__subtitle
+        会員数日本一位
+      %p.Main__middle__inner__text
+        FURIMAは、フリマアプリで最も人気。
+        %br
+        出品・購入回数も業界最多です！
+        %br
+        ほしかったあの商品に出会えるかもしれません。
+      .Main__middle__inner__btn
+        = link_to image_tag("icon/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg", alt: "App-Store", class: "AppStore")
+        = link_to image_tag("icon/google-play-badge.png", alt: "Google-Play", class: "GooglePlay")
+
+
+  // FURIMAの特徴
+  .Main__feature
+    .Main__feature__head
+      FURIMAの特徴
+    .Main__feature__items
+      .Main__feature__items__item
+        .Main__feature__items__item__img
+          = image_tag("icon/icon-01.png", alt: "簡単に売り買いできる", class: "Main__feature__items__item__img__icon")
+        %h3.Main__feature__items__item__subtitle
+          簡単に売り買いできる
+        %p.Main__feature__items__item__detail
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      .Main__feature__items__item
+        .Main__feature__items__item__img
+          = image_tag("icon/icon-03.png", alt: "売上金は即日振り込みに対応", class: "Main__feature__items__item__img__icon")
+        %h3.Main__feature__items__item__subtitle
+          売上金は即日振り込みに対応
+        %p.Main__feature__items__item__detail
+          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします！
+
+      .Main__feature__items__item
+        .Main__feature__items__item__img
+          = image_tag("icon/icon-04.png", alt: "様々な支払いに対応", class: "Main__feature__items__item__img__icon")
+        %h3.Main__feature__items__item__subtitle
+          様々な支払いに対応
+        %p.Main__feature__items__item__detail
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+
+
+  // ピックアップカテゴリー
+  .Main__container
+    %h2.Main__container__head
+      ピップアップカテゴリー
+    .Main__container__productBox
+      .Main__container__productBox__productHead
+        = link_to root_path, class: "Main__container__productBox__productHead--link" do
+          %h3.Main__container__productBox__productHead--title
+            新規投稿商品
+            
+      .Main__container__productBox__productLists
+        .Main__container__productBox__productLists__list
+          = link_to root_path, class: "Main__container__productBox__productLists__list__goods" do
+            .Main__container__productBox__productLists__list--img
+              = image_tag("pict/mgg-vitchakorn-98Xi5vMGKck-unsplash.jpg", alt: "パスタ", class: "Main__container__productBox__productLists__list--img picture")
+            .Main__container__productBox__productLists__list--body
+              %h3.Main__container__productBox__productLists__list--body.name
+                テスト1
+              .Main__container__productBox__productLists__list--body.details
+                %ul
+                  %li
+                    10000円
+                  %li
+                    = icon("fas", "fa-star", class: "fa")
+                    0
+                %p
+                  (税込み)
+
+        .Main__container__productBox__productLists__list
+          = link_to root_path, class: "Main__container__productBox__productLists__list__goods" do
+            .Main__container__productBox__productLists__list--img
+              = image_tag("pict/mike-PxJ9zkM2wdA-unsplash.jpg", alt: "ハンバーガー", class: "Main__container__productBox__productLists__list--img picture")
+            .Main__container__productBox__productLists__list--body
+              %h3.Main__container__productBox__productLists__list--body.name
+                テスト2
+              .Main__container__productBox__productLists__list--body.details
+                %ul
+                  %li
+                    10000円
+                  %li
+                    = icon("fas", "fa-star", class: "fa")
+                    0
+                %p
+                  (税込み)
+
+        .Main__container__productBox__productLists__list
+          = link_to root_path, class: "Main__container__productBox__productLists__list__goods" do
+            .Main__container__productBox__productLists__list--img
+              = image_tag("pict/dragne-marius-EdzsUFqHbaY-unsplash.jpg", alt: "カレーライス", class: "Main__container__productBox__productLists__list--img picture")
+            .Main__container__productBox__productLists__list--body
+              %h3.Main__container__productBox__productLists__list--body.name
+                テスト3
+              .Main__container__productBox__productLists__list--body.details
+                %ul
+                  %li
+                    10000円
+                  %li
+                    = icon("fas", "fa-star", class: "fa")
+                    0
+                %p
+                  (税込み)
+
+        .Main__container__productBox__productLists__list
+          = link_to root_path, class: "Main__container__productBox__productLists__list__goods" do
+            .Main__container__productBox__productLists__list--img
+              = image_tag("pict/amirali-mirhashemian-Ea_IbQfxm-0-unsplash.jpg", alt: "サンドウィッチ", class: "Main__container__productBox__productLists__list--img picture")
+            .Main__container__productBox__productLists__list--body
+              %h3.Main__container__productBox__productLists__list--body.name
+                テスト4
+              .Main__container__productBox__productLists__list--body.details
+                %ul
+                  %li
+                    10000円
+                  %li
+                    = icon("fas", "fa-star", class: "fa")
+                    0
+                %p
+                  (税込み)
+
+        .Main__container__productBox__productLists__list
+          = link_to root_path, class: "Main__container__productBox__productLists__list__goods" do
+            .Main__container__productBox__productLists__list--img
+              = image_tag("pict/chad-montano-M0lUxgLnlfk-unsplash.jpg", alt: "ステーキ", class: "Main__container__productBox__productLists__list--img picture")
+            .Main__container__productBox__productLists__list--body
+              %h3.Main__container__productBox__productLists__list--body.name
+                テスト5
+              .Main__container__productBox__productLists__list--body.details
+                %ul
+                  %li
+                    10000円
+                  %li
+                    = icon("fas", "fa-star", class: "fa")
+                    0
+                %p
+                  (税込み)
+       
+  // ピックアップブランド
+  .Main__container
+    %h2.Main__container__head
+      ピップアップブランド
+    .Main__container__productBox
+      .Main__container__productBox__productHead
+        = link_to root_path, class: "Main__container__productBox__productHead--link" do
+          %h3.Main__container__productBox__productHead--title
+            アーカイバ
+            
+      .Main__container__productBox__productLists
+        .Main__container__productBox__productLists__list
+          = link_to root_path, class: "Main__container__productBox__productLists__list__goods" do
+            .Main__container__productBox__productLists__list--img
+              = image_tag("pict/mgg-vitchakorn-98Xi5vMGKck-unsplash.jpg", alt: "パスタ", class: "Main__container__productBox__productLists__list--img picture")
+            .Main__container__productBox__productLists__list--body
+              %h3.Main__container__productBox__productLists__list--body.name
+                テスト1
+              .Main__container__productBox__productLists__list--body.details
+                %ul
+                  %li
+                    10000円
+                  %li
+                    = icon("fas", "fa-star", class: "fa")
+                    0
+                %p
+                  (税込み)
+
+        .Main__container__productBox__productLists__list
+          = link_to root_path, class: "Main__container__productBox__productLists__list__goods" do
+            .Main__container__productBox__productLists__list--img
+              = image_tag("pict/mike-PxJ9zkM2wdA-unsplash.jpg", alt: "ハンバーガー", class: "Main__container__productBox__productLists__list--img picture")
+            .Main__container__productBox__productLists__list--body
+              %h3.Main__container__productBox__productLists__list--body.name
+                テスト2
+              .Main__container__productBox__productLists__list--body.details
+                %ul
+                  %li
+                    10000円
+                  %li
+                    = icon("fas", "fa-star", class: "fa")
+                    0
+                %p
+                  (税込み)
+
+        .Main__container__productBox__productLists__list
+          = link_to root_path, class: "Main__container__productBox__productLists__list__goods" do
+            .Main__container__productBox__productLists__list--img
+              = image_tag("pict/dragne-marius-EdzsUFqHbaY-unsplash.jpg", alt: "カレーライス", class: "Main__container__productBox__productLists__list--img picture")
+            .Main__container__productBox__productLists__list--body
+              %h3.Main__container__productBox__productLists__list--body.name
+                テスト3
+              .Main__container__productBox__productLists__list--body.details
+                %ul
+                  %li
+                    10000円
+                  %li
+                    = icon("fas", "fa-star", class: "fa")
+                    0
+                %p
+                  (税込み)
+
+        .Main__container__productBox__productLists__list
+          = link_to root_path, class: "Main__container__productBox__productLists__list__goods" do
+            .Main__container__productBox__productLists__list--img
+              = image_tag("pict/amirali-mirhashemian-Ea_IbQfxm-0-unsplash.jpg", alt: "サンドウィッチ", class: "Main__container__productBox__productLists__list--img picture")
+            .Main__container__productBox__productLists__list--body
+              %h3.Main__container__productBox__productLists__list--body.name
+                テスト4
+              .Main__container__productBox__productLists__list--body.details
+                %ul
+                  %li
+                    10000円
+                  %li
+                    = icon("fas", "fa-star", class: "fa")
+                    0
+                %p
+                  (税込み)
+
+        .Main__container__productBox__productLists__list
+          = link_to root_path, class: "Main__container__productBox__productLists__list__goods" do
+            .Main__container__productBox__productLists__list--img
+              = image_tag("pict/chad-montano-M0lUxgLnlfk-unsplash.jpg", alt: "ステーキ", class: "Main__container__productBox__productLists__list--img picture")
+            .Main__container__productBox__productLists__list--body
+              %h3.Main__container__productBox__productLists__list--body.name
+                テスト5
+              .Main__container__productBox__productLists__list--body.details
+                %ul
+                  %li
+                    10000円
+                  %li
+                    = icon("fas", "fa-star", class: "fa")
+                    0
+                %p
+                  (税込み)
