@@ -96,6 +96,7 @@ Column|Type|Options|
 - has_many :images dependent: :destroy
 - belongs_to :category dependent: :destroy
 - belongs_to :brand dependent: :destroy
+- 
 
 
 ## imagesテーブル
@@ -129,3 +130,16 @@ Column|Type|Options|
 
 ### Association
 - has_many :items
+
+
+## commentsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|text|string|
+|item_id|integer|foreign_key: true|
+|user_id|integer|foreign_key: true|
+
+### Association
+- belongs_to :item
+- belongs_to :user
