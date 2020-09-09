@@ -4,5 +4,5 @@ class ItemsController < ApplicationController
 
   def purchase
   end
-  
+
 end
