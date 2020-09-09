@@ -63,6 +63,10 @@ Things you may want to cover:
 
 Column|Type|Options|
 |------|----|-------|
+|destination_familyname|string|null: false|
+|destination_firstname|string|null: false|
+|destination_familyname_kana|string|null: false|
+|destination_firstname_kana|string|null: false|
 |post_code|string|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
