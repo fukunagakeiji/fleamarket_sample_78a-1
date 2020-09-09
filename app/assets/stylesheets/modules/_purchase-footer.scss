@@ -1,0 +1,38 @@
+// トップページのフッター 
+.Footer {
+  height: 350px;
+  padding: 60px 0;
+  color: #fff;
+  background-color: #272727;
+  text-align: center;
+
+  .Contents {
+    max-width: 840px;
+    margin: 0 auto;
+    display: flex;
+    .Content {
+      width: calc(1 / 3 * 100%);
+      margin: 0 2% 0 0;
+      &__head {
+        margin: 0 0 20px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &__category {
+        font-size: 12px;
+        line-height: 32px;
+        text-decoration: none;
+      }
+    }
+  }
+  &__logo {
+    width: 100%;
+    margin: 0 auto;
+    &--image {
+      max-width: 160px;
+    }
+    &--text {
+      font-size: 14px;
+    }
+  }
+}
