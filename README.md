@@ -31,28 +31,27 @@ Things you may want to cover:
 |password|strimg|null: false, unique: true|
 |icon|string|
 |introduction|text|
-|familyname|string|null: false|
-|firstname|string|null: false|
-|familyname_kana|string|null: false|
-|firstname_kana|string|null: false|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
 |birthday_year|date|null: false|
 |birthday_month|date|null: false|
 |birthday_day|date|null: false|
 
 ### Association
 - has_many :items dependent: :destroy
-- belongs_to :contact_information dependent: :destroy
-- belongs_to :creditcard dependent: :destroy
+- has_many :contact_informations dependent: :destroy
+- has_many :creditcards dependent: :destroy
+- has_many :Comments 
 
 
 ## creditcardテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|card_number|string|null: false|
-|effective_date_month|string|null: false|
-|effective_date_year|string|null: false|
-|security_card|string|null: false|
+|card_id|string|null: false|
+|customer_id|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
@@ -63,16 +62,16 @@ Things you may want to cover:
 
 Column|Type|Options|
 |------|----|-------|
-|destination_familyname|string|null: false|
-|destination_firstname|string|null: false|
-|destination_familyname_kana|string|null: false|
-|destination_firstname_kana|string|null: false|
+|destination_family_name|string|null: false|
+|destination_first_name|string|null: false|
+|destination_family_name_kana|string|null: false|
+|destination_first_name_kana|string|null: false|
 |post_code|string|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
-|housenumber|string|null: false|
+|house_number|string|null: false|
 |building_name|string|
-|phonenumber|string|
+|phone_number|string|
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
@@ -92,7 +91,6 @@ Column|Type|Options|
 |price|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |category_id|integer|null: false, foreign_key: true|
-|image_id|integer|null: false, foreign_key: true|
 |brand_id|integer|null: false, foreign_key: true|
 
 ### Association
@@ -100,7 +98,7 @@ Column|Type|Options|
 - has_many :images dependent: :destroy
 - belongs_to :category dependent: :destroy
 - belongs_to :brand dependent: :destroy
-- 
+- has_many :comments dependent: :destroy
 
 
 ## imagesテーブル
@@ -119,7 +117,6 @@ Column|Type|Options|
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|item_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many :items
@@ -130,7 +127,6 @@ Column|Type|Options|
 |Column|Type|Options|
 |------|----|-------|
 |name|string|
-|item_id|integer|foreign_key: true|
 
 ### Association
 - has_many :items
