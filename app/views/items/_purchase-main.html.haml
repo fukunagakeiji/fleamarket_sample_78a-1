@@ -1,0 +1,44 @@
+// 商品購入確認ページのメイン
+.Main
+  // 商品購入確認ページの大枠
+  .Main__content
+    // 商品購入確認ページの各項目
+    // タイトル
+    %h2.Main__content__title
+      購入内容の確認
+    
+    // 購入する商品の内容
+    .Main__content__product
+      .Main__content__product__goods
+        .Main__content__product__goods__picture
+          = image_tag("pict/mgg-vitchakorn-98Xi5vMGKck-unsplash.jpg", alt: "パスタ", class: "Main__content__product__goods__picture--image")
+        .Main__content__product__goods__text
+          %p.Main__content__product__goods__text__name
+            テスト1
+          .Main__content__product__goods__text__cash
+            %p.Main__content__product__goods__text__cash--postage
+              送料込み(税込)
+            %p.Main__content__product__goods__text__cash--total
+              ¥10000
+
+    // 支払い金額
+    .Main__content__money
+      %p.Main__content__money__payment
+        支払い金額
+      %p.Main__content__money__sum
+        ¥10000
+
+    // 支払い方法
+    .Main__content__way
+      %p.Main__content__way__text
+        支払い方法
+
+    // 配送先
+    .Main__content__address
+
+    // 購入するボタン
+    .Main__content__purchase
+
+    
+
+
