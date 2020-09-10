@@ -125,7 +125,7 @@ Column|Type|Options|
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|
+|name|string|null: false|
 
 ### Association
 - has_many :items
@@ -135,7 +135,7 @@ Column|Type|Options|
 
 |Column|Type|Options|
 |------|----|-------|
-|text|string|
+|text|string|null: false|
 |item_id|integer|foreign_key: true|
 |user_id|integer|foreign_key: true|
 
