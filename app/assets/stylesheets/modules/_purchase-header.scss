@@ -1,7 +1,9 @@
 // 商品購入ページのヘッダー
-.Header {
+.PurchaseHeader {
+  background: #f8f8f8;
   height: 100px;
   padding: 0 60px;
+  text-align: center;
 
   // 商品購入ページのヘッダーのインフォメーション
   &__info {
@@ -11,8 +13,11 @@
     margin: 0 auto;
     &__title {
       margin-top: 30px;
-      justify-content: center;
+      margin-bottom: 30px;
       &__inner {
+        .inner-logo {
+          height: 40px;
+        }
       }
     }
   }

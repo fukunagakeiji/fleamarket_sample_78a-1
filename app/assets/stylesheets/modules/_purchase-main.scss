@@ -1,77 +1,134 @@
-// 商品購入確認ページのメイン
-.Main {
+.Wrapper {
   background: #f8f8f8;
-  margin: 0 100px;
-  &__content {
-    height: 560px;
-    width: 100%;
-    text-align: center;
+  // 商品購入確認ページのメイン
+  .PurchaseMain {
+    background: white;
+    margin: 0 200px;
+    padding: 32px 16px;
+    
+    &__content {
+      width: 100%;
+      text-align: center;
 
-    // 商品購入確認ページのタイトル
-    &__title {
-      font-size: 24px;
-      font-weight: bold;
-      line-height: 34px;
-      padding-top: 50px;
-      margin-bottom: 50px;
-    }
+      // 商品購入確認ページのタイトル
+      &__title {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 34px;
+        padding-top: 50px;
+        margin-bottom: 50px;
+      }
 
-    // 購入する商品の内容
-    &__product {
-      height: 100px;
-      margin-bottom: 50px;
-      &__goods {
+      // 購入する商品の内容
+      &__product {
+        text-align: center;
+        height: 100px;
+        margin-bottom: 50px;
+        &__goods {
+          display: flex;
+          justify-content: center;
+          &__picture {
+            &--image {
+              height: 100px;
+            }
+          }
+          &__text {
+            margin-left: 30px;
+            &__name {
+              font-size: 14px;
+              line-height: 1.4em;
+              margin-bottom: 8px;
+              text-align: right;
+            }
+            &__cash {
+              display: flex;
+              text-align: right;
+              &--postage {
+                font-size: 12px;
+              }
+              &--total {
+                font-size: 15px;
+                font-weight: 600;
+                margin-left: 8px;
+              }
+            }
+          }
+        }
+      }
+
+      // 支払い金額
+      &__money {
         display: flex;
         justify-content: center;
-        align-items: center;
-        &__picture {
-          &--image {
-            height: 100px;
-          }
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 50px;
+        &__payment {
+          margin-right: 170px;
         }
+        &__sum {
+        }
+      }
+
+      // 支払い方法
+      &__way {
+        margin-bottom: 50px;
         &__text {
-          margin-left: 30px;
-          &__name {
-            font-size: 14px;
-            line-height: 1.4em;
-            margin-bottom: 8px;
-            text-align: right;
+          margin-bottom: 5px;
+        }
+        &__registration {
+          &--card {
+            text-decoration: none;
           }
-          &__cash {
-            display: flex;
-            text-align: right;
-            &--postage {
-              font-size: 12px;
+        }
+
+      }
+
+      // 配送先
+      &__address {
+        &__delivery {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 10px;
+          // 配送先
+          &__shipping {
+            margin-right: 200px;
+          }
+          // 変更ボタン
+          &__change {
+            &--btn {
+              text-decoration: none;
             }
-            &--total {
-              font-size: 15px;
-              font-weight: 600;
-              margin-left: 8px;
+          }
+        }
+        // ユーザーの情報
+        &__userinfo {
+          display: flex;
+          flex-direction: column;
+          font-size: 14px;
+          margin-bottom: 50px;
+        }
+      }
+
+      // 購入するボタン
+      &__purchase {
+        padding-bottom: 50px;
+        &__announcement {
+          font-size: 14px;
+          &__warning {
+            margin-bottom: 20px;
+            color: red;
+          }
+          &__done {
+            padding: 0 24px;
+            &--btn {
+              font-size: 1px;
+              min-height: 48px;
+              padding: 0 24px;
             }
           }
         }
       }
-    }
-
-    // 支払い金額
-    &__money {
-      display: flex;
-      justify-content: center;
-      &__payment {
-
-      }
-      &__sum {
-
-      }
-    }
-    &__way {
-
-    }
-    &__address {
-
-    }
-    &__purchase {
-
     }
   }
 }
