@@ -1,0 +1,24 @@
+// 商品購入ページのヘッダー
+.PurchaseHeader {
+  background: #f8f8f8;
+  height: 120px;
+  padding: 0 60px;
+  text-align: center;
+
+  // 商品購入ページのヘッダーのインフォメーション
+  &__info {
+    max-width: 1040px;
+    width: 100%;
+    padding: 15px 0 0;
+    margin: 0 auto;
+    &__title {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      &__inner {
+        .inner-logo {
+          height: 50px;
+        }
+      }
+    }
+  }
+}
