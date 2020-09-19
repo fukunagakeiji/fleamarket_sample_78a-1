@@ -7,5 +7,4 @@ class ItemsController < ApplicationController
 
   def listing
   end
-
 end
