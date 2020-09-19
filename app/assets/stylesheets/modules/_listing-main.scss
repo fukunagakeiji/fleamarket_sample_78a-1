@@ -50,6 +50,18 @@
           font-weight: 600;
           line-height: 1.4em;
         }
+        &--brand {
+          margin-left: 8px;
+          font-size: 12px;
+          padding: 0 4px;
+          background-color: #bfbfbf;
+          color: #fff;
+          border-radius: 2px;
+          display: inline-block;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 1.4em;
+        }
       }
       // 各項目の下線
       &__separation {
