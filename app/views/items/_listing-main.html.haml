@@ -1,0 +1,195 @@
+// 商品出品ページのメイン
+.ListingMain
+  // 商品出品ページのメインの全体
+  .ListingMain__entire
+    // 商品出品ページの各項目
+    // 出品画像
+    .ListingMain__entire__menu
+    // form_withの引数はあとでモデル名に変更
+    = form_with url: root_path, local: true do |f|
+      .ListingMain__entire__menu__text
+        %p.ListingMain__entire__menu__text--letter
+          出品画像
+        %span.ListingMain__entire__menu__text--note
+          必須
+      %p.ListingMain__entire__menu__sheets
+        最大5枚までアップロードできます
+      
+      // 画像アップロード
+      .ListingMain__entire__menu__list
+        .ListingMain__entire__menu__list__field
+          .ListingMain__entire__menu__list__field__display
+            = f.label :image, class: "ListingMain__entire__menu__list__field__display__content" do
+              = icon("fas", "camera", class: "ListingMain__entire__menu__list__field__display__content--image")
+              = f.file_field :image, class: "ListingMain__entire__menu__list__field__display__content--file"
+              %p.ListingMain__entire__menu__list__field__display__content--format
+                ドラッグアンドドロップ
+                %br
+                またはクリックしてファイルをアップロード
+          
+      .ListingMain__entire__menu__separation
+        
+      // 商品名
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__text
+          %p.ListingMain__entire__menu__text--letter
+            商品名
+          %span.ListingMain__entire__menu__text--note
+            必須
+                
+      // 商品名記入欄
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__form
+          .ListingMain__entire__menu__form__list
+            = f.text_field :name, class: "ListingMain__entire__menu__form__list__input", placeholder: "商品名を書いてください"
+     
+      // 商品の説明
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__text
+          %p.ListingMain__entire__menu__text--letter
+            商品の説明
+          %span.ListingMain__entire__menu__text--note
+            必須
+
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__form
+          .ListingMain__entire__menu__form__list
+            = f.text_area :explain, class: "ListingMain__entire__menu__form__list__area", placeholder: "商品の説明（色、素材、重さ、定価、注意点など）例）2020年頃に2万円で購入した時計です。数回しか使用しておらず、状態も良いです。"
+      
+
+      .ListingMain__entire__menu__separation
+
+      // 商品の詳細
+      // カテゴリー
+      .ListingMain__entire__menu
+        %p.ListingMain__entire__menu__index
+          商品の詳細
+        .ListingMain__entire__menu__text
+          %p.ListingMain__entire__menu__text--letter
+            カテゴリー
+          %span.ListingMain__entire__menu__text--note
+            必須
+
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__form
+          .ListingMain__entire__menu__form__list
+            = f.text_field :name, class: "ListingMain__entire__menu__form__list__input", placeholder: "選択してください"
+
+
+      .ListingMain__entire__menu__separation
+
+      // ブランド
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__text
+          %p.ListingMain__entire__menu__text--letter
+            ブランド
+          %span.ListingMain__entire__menu__text--note
+            必須
+
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__form
+          .ListingMain__entire__menu__form__list
+            = f.text_field :name, class: "ListingMain__entire__menu__form__list__input", placeholder: "選択してください"
+
+      .ListingMain__entire__menu__separation
+
+      // 商品の状態
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__text
+          %p.ListingMain__entire__menu__text--letter
+            商品の状態
+          %span.ListingMain__entire__menu__text--note
+            必須
+
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__form
+          .ListingMain__entire__menu__form__list
+            = f.text_field :name, class: "ListingMain__entire__menu__form__list__input", placeholder: "選択してください"
+
+      .ListingMain__entire__menu__separation
+
+      // 配送について
+      // 配送料の負担
+      .ListingMain__entire__menu
+        %p.ListingMain__entire__menu__index
+          配送について
+        .ListingMain__entire__menu__text
+          %p.ListingMain__entire__menu__text--letter
+            配送料の負担
+          %span.ListingMain__entire__menu__text--note
+            必須
+
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__form
+          .ListingMain__entire__menu__form__list
+            = f.text_field :name, class: "ListingMain__entire__menu__form__list__input", placeholder: "選択してください"
+
+      .ListingMain__entire__menu__separation
+
+      // 発送元の地域
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__text
+          %p.ListingMain__entire__menu__text--letter
+            発送元の地域
+          %span.ListingMain__entire__menu__text--note
+            必須
+
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__form
+          .ListingMain__entire__menu__form__list
+            = f.text_field :name, class: "ListingMain__entire__menu__form__list__input", placeholder: "選択してください"
+
+      .ListingMain__entire__menu__separation
+
+      // 発送までの日数
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__text
+          %p.ListingMain__entire__menu__text--letter
+            発送までの日数
+          %span.ListingMain__entire__menu__text--note
+            必須
+
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__form
+          .ListingMain__entire__menu__form__list
+            = f.text_field :name, class: "ListingMain__entire__menu__form__list__input", placeholder: "選択してください"
+
+      .ListingMain__entire__menu__separation
+
+      // 価格(¥300~9,999,999)
+      .ListingMain__entire__menu
+        %p.ListingMain__entire__menu__index
+          価格 (¥300~9,999,999)
+        .ListingMain__entire__menu__text
+          %p.ListingMain__entire__menu__text--letter
+            販売価格
+          %span.ListingMain__entire__menu__text--note
+            必須
+
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__form
+          .ListingMain__entire__menu__form__list__price
+            ¥
+            = f.text_field :name, class: "ListingMain__entire__menu__form__list"
+
+      .ListingMain__entire__menu__separation
+
+      // 出品するボタン
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__settlement
+          = button_tag type: "submit", class: "ListingMain__entire__menu__settlement--exhibit" do
+            %p 出品する
+
+          // もどるボタン
+          = link_to root_path, class: "ListingMain__entire__menu__settlement--return" do
+            %p もどる
+
+      // 注意書き
+      .ListingMain__entire__menu
+        .ListingMain__entire__menu__attention
+          %p.ListingMain__entire__menu__attention__message
+            禁止されている行為および出品物を必ずご確認ください。
+            %br
+            偽ブランド品や窃盗物などの販売は犯罪であり、法律により処罰される可能性があります。
+            %br
+            また、出品をもちまして加盟店規約に同士したことになります。
