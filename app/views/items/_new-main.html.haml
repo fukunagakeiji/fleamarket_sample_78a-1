@@ -5,8 +5,8 @@
     // 商品出品ページの各項目
     // 出品画像
     .ListingMain__entire__menu
-    // form_withの引数はあとでモデル名に変更
-    = form_with url: root_path, local: true do |f|
+    // form_withの引数(@itemのなかにItemモデルのインスタンスが入っている場合、Railsはそのクラス名から送信先を推定する)
+    = form_with model: @item, local: true do |f|
       .ListingMain__entire__menu__text
         %p.ListingMain__entire__menu__text--letter
           出品画像
@@ -177,8 +177,7 @@
       // 出品するボタン
       .ListingMain__entire__menu
         .ListingMain__entire__menu__settlement
-          = button_tag type: "submit", class: "ListingMain__entire__menu__settlement--exhibit" do
-            %p 出品する
+          = f.submit "出品する", class: "ListingMain__entire__menu__settlement--exhibit"
 
           // もどるボタン
           = link_to root_path, class: "ListingMain__entire__menu__settlement--return" do

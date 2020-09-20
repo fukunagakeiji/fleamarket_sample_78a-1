@@ -1,13 +1,10 @@
 class ItemsController < ApplicationController
-  
+
   # 誰が出品したかわかるようにprivateに記載
   before_acton :set_user
 
   # 商品一覧表示
   def index
-   
-  end
-
   end
 
   # 商品の保存
@@ -21,6 +18,14 @@ class ItemsController < ApplicationController
       flash.now[:alert] = "メッセージを入力してください"
       render :listing
     end
+  end
+  
+  # 商品出品ページへ遷移する処理
+  def new
+    # Itemモデルのインスタンスを生成
+    @item = Item.new
+    # ユーザーのすべての商品である@itemsを定義。「n+1問題」を避けるために、includes(:user)を記載。
+    @items = @user.items.includes(:user)
   end
 
   # 商品購入
