@@ -5,4 +5,6 @@ class ItemsController < ApplicationController
   def purchase
   end
 
+  def listing
+  end
 end
