@@ -75,3 +75,6 @@ gem 'font-awesome-sass'
 # Carrierwaveの導入
 gem 'carrierwave'
 gem 'mini_magick'
+
+# fog-awsの導入（画像をアップロードする際、外部のストレージを選択しアップロードするのを補助してくれるGem。AWSを使用)
+gem "fog-aws"
