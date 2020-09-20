@@ -71,3 +71,7 @@ gem "haml-rails", ">= 1.0", '<= 2.0.1'
 
 # FontAwesomeの導入
 gem 'font-awesome-sass'
+
+# Carrierwaveの導入
+gem 'carrierwave'
+gem 'mini_magick'
