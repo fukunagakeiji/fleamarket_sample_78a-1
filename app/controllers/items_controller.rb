@@ -11,22 +11,21 @@ class ItemsController < ApplicationController
   def new
     # Itemモデルのインスタンスを生成(form_withで使用するためインスタンス変数が必要)
     @item = Item.new
+    # @item.images.newにより、newアクションで定義されたItemクラスのインスタンスに関連づけられたImageクラスのインスタンスが作成される。
+    @item.images.new
     # # ユーザーのすべての商品である@itemsを定義。「n+1問題」を避けるために、includes(:user)を記載。
     # @items = @user.items.includes(:user)
   end
 
   # 商品の保存
   def create
-    Item.create(item_params)
-    # @item = @user.items.new(item_params)
-    #  # 商品の保存に成功した場合、保存に失敗した場合で処理を分岐
-    # if @item.save
-    #   redirect_to root_path(@user), notice: "商品が出品されました"
-    # else
-    #   @items = @user.items.includes(:user)
-    #   flash.now[:alert] = "メッセージを入力してください"
-    #   render :listing
-    # end
+    @item = Item.new(item_params)
+    # 商品の保存に成功した場合、保存に失敗した場合で処理を分岐
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   # 商品購入
@@ -38,7 +37,8 @@ class ItemsController < ApplicationController
 
   # ストロングパラメーターを使って、指定したキーを持つパラメーターのみを受け取るように制限
   def item_params
-    params.require(:item).permit(:name, :explain, :status, :delivery_fee, :region, :days, :price, :user_id, :category_id, :brand_id)
+    # fields_forを利用して作成されたフォームから来る値は、○○s_attributes: [:××]という形でparamsに入ります。○○は関連付く側のモデルの名前、××にはフォームに対応するカラムの名前が入ります。
+    params.require(:item).permit(:name, :price, images_attributes: [:image])
     # .merge(user_id: current_user.id)
   end
 
