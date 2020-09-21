@@ -84,3 +84,6 @@ gem "devise"
 
 # jQueryの導入
 gem "jquery-rails"
+
+# binding.pryの導入
+gem "pry-rails"
