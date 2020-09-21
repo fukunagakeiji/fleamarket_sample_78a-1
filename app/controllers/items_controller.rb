@@ -38,7 +38,8 @@ class ItemsController < ApplicationController
 
   # ストロングパラメーターを使って、指定したキーを持つパラメーターのみを受け取るように制限
   def item_params
-    params.require(:item).permit(:name, :explain, :status, :delivery_fee, :region, :days, :price, :user_id, :category_id, :brand_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :explain, :status, :delivery_fee, :region, :days, :price, :user_id, :category_id, :brand_id)
+    # .merge(user_id: current_user.id)
   end
 
   # itemsコントローラーの全てのアクションで@userを利用できる
