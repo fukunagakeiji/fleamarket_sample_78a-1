@@ -81,3 +81,6 @@ gem "fog-aws"
 
 # deviseの導入
 gem "devise"
+
+# jQueryの導入
+gem "jquery-rails"

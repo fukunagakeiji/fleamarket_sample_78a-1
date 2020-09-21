@@ -21,8 +21,14 @@
           .ListingMain__entire__menu__list__field__display
             = f.label :image, class: "ListingMain__entire__menu__list__field__display__content" do
               = icon("fas", "camera", class: "ListingMain__entire__menu__list__field__display__content--image")
+            #image-box
               = f.fields_for :images do |i|
-                = i.file_field :image
+                .data-index
+                  // i.indexとすることで、ビルドされた際に振られるindexを取得できる
+                  = i.index, class: "js-file_group"
+                    = i.file_field :image, class: "js-file"
+                    %span.js-remove
+                      削除
               //= f.file_field :image, class: "ListingMain__entire__menu__list__field__display__content--file"
               %p.ListingMain__entire__menu__list__field__display__content--format
                 ドラッグアンドドロップ
