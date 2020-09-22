@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     # 商品の保存に成功した場合、保存に失敗した場合で処理を分岐
-    if @item.save
+    if @item.save!
       redirect_to root_path
     else
       render :new
@@ -37,8 +37,8 @@ class ItemsController < ApplicationController
 
   # ストロングパラメーターを使って、指定したキーを持つパラメーターのみを受け取るように制限
   def item_params
-    # fields_forを利用して作成されたフォームから来る値は、○○s_attributes: [:××]という形でparamsに入ります。○○は関連付く側のモデルの名前、××にはフォームに対応するカラムの名前が入ります。
-    params.require(:item).permit(:name, :price, images_attributes: [:image])
+    # fields_forを利用して作成されたフォームから来る値は、○○s_attributes: [:××]という形でparamsに入る。。○○は関連付く側のモデルの名前、××にはフォームに対応するカラムの名前が入る。
+    params.require(:item).permit(:name, :explain, :status, :delivery_fee, :region, :days, :price, :user_id, :category_id, :brand_id, images_attributes: [:image])
     # .merge(user_id: current_user.id)
   end
 
