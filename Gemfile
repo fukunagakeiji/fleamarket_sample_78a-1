@@ -87,3 +87,6 @@ gem "jquery-rails"
 
 # binding.pryの導入
 gem "pry-rails"
+
+# ancestryの導入（ActiveRecordモデルのレコードをツリー構造（階層）として編集することを可能にするGem）
+gem "ancestry"
