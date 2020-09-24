@@ -90,3 +90,6 @@ gem "pry-rails"
 
 # ancestryの導入（ActiveRecordモデルのレコードをツリー構造（階層）として編集することを可能にするGem）
 gem "ancestry"
+
+# active_hashの導入（擬似モデルを作ることができるGem)
+gem "active_hash"
