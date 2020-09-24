@@ -72,9 +72,17 @@
             必須
 
       .ListingMain__entire__menu
-        .ListingMain__entire__menu__form
-          .ListingMain__entire__menu__form__list
-            = f.text_field :name, class: "ListingMain__entire__menu__form__list__input", placeholder: "選択してください"
+        .ListingMain__entire__menu__form#category_box
+          // 親カテゴリー
+          .ListingMain__entire__menu__form__list#parent_box
+            = f.collection_select :category_id, Category.all.limit(13), :id, :name,{prompt:"選択してください"}, {class: "ListingMain__entire__menu__form__list__input", id: "parent_category"}
+
+          // 子カテゴリー
+          .ListingMain__entire__menu__form__children#children_box
+            -#親カテゴリー選択によって子カテゴリー表示
+          // 孫カテゴリー
+          .LisitngMain__entire__menu__form__grandchildren#grandchildren_box
+            -#子カテゴリー選択によって孫カテゴリー表示
 
 
       .ListingMain__entire__menu__separation
@@ -90,7 +98,8 @@
       .ListingMain__entire__menu
         .ListingMain__entire__menu__form
           .ListingMain__entire__menu__form__list
-            = f.text_field :name, class: "ListingMain__entire__menu__form__list__input", placeholder: "選択してください"
+            = f.fields_for :brands do |brand|
+              = brand.text_field :name, class: "ListingMain__entire__menu__form__list__input", placeholder: "例) シャネル"
 
       .ListingMain__entire__menu__separation
 

@@ -2,12 +2,13 @@ class Item < ApplicationRecord
   # アソシエーション
   belongs_to :user, dependent: :destroy
   has_many :images, dependent: :destroy
-  # fields_forメソッドを利用する際に、親モデルの中に書く必要があるメソッド
-  # allow_destroy: trueメソッド（accepts_nested_attributes_forメソッドのオプションとして、引数に書くことができる記述です。このオプションをつけることで、親のレコードが削除された場合に、関連付いている子のレコードも一緒に削除してくれます。）
-  accepts_nested_attributes_for :images, allow_destroy: true
   belongs_to :category, dependent: :destroy
-  belongs_to :brand, dependent: :destroy
+  has_one :brand, dependent: :destroy
   has_many :comments, dependent: :destroy
+  # fields_forメソッドを利用する際に、親モデルの中に書く必要があるメソッド(field_forメソッドはアソシエーションで紐づいているモデルを1つのフォームで入力・更新できる)
+  # allow_destroy: trueメソッド（accepts_nested_attributes_forメソッドのオプションとして、引数に書くことができる記述です。このオプションをつけることで、親のレコードが削除された場合に、関連付いている子のレコードも一緒に削除してくれる。）
+  accepts_nested_attributes_for :images, allow_destroy: true
+  accepts_nested_attributes_for :brand, allow_destroy: true
 
   # バリデーション
   validates :name, presence: true
