@@ -48,6 +48,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop', require: false
+  # テストコードを書くためにRSpecを導入
+  gem 'rspec-rails', '~> 4.0.0.beta2'
 end
 
 group :test do
