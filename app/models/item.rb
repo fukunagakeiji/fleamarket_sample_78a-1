@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :deliveryfee
   belongs_to_active_hash :shippingdays
+  belongs_to_active_hash :status
   belongs_to :user, dependent: :destroy
   has_many :images, dependent: :destroy
   belongs_to :category, dependent: :destroy
@@ -17,9 +18,10 @@ class Item < ApplicationRecord
   # バリデーション
   validates :name, presence: true
   validates :explain, presence: true
-  validates :status, presence: true
+  validates :status_id, presence: true
   validates :delivery_fee, presence: true
   validates :region, presence: true
   validates :days, presence: true
   validates :price, presence: true
+  validates_associated :images, presence: true
 end

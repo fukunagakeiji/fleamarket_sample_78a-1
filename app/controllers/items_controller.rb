@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
   # ストロングパラメーターを使って、指定したキーを持つパラメーターのみを受け取るように制限
   def item_params
     # fields_forを利用して作成されたフォームから来る値は、○○s_attributes: [:××]という形でparamsに入る。。○○は関連付く側のモデルの名前、××にはフォームに対応するカラムの名前が入る。
-    params.require(:item).permit(:name, :explain, :status, :delivery_fee, :region, :days, :price, :user_id, :category_id, brands_attributes: [:name], images_attributes: [:image])
+    params.require(:item).permit(:name, :explain, :status_id, :delivery_fee, :region, :days, :price, :user_id, :category_id, brands_attributes: [:name], images_attributes: [:image])
     # .merge(user_id: current_user.id)
   end
 

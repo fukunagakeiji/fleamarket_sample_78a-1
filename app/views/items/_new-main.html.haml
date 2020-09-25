@@ -114,7 +114,7 @@
       .ListingMain__entire__menu
         .ListingMain__entire__menu__form
           .ListingMain__entire__menu__form__list
-            = f.text_field :status, class: "ListingMain__entire__menu__form__list__input", placeholder: "選択してください"
+            = f.collection_select :status_id, Status.all, :id, :status, {prompt: "選択してください"}, {class: "ListingMain__entire__menu__form__list__input"}
 
       .ListingMain__entire__menu__separation
 
