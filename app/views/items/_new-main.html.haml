@@ -19,14 +19,21 @@
       .ListingMain__entire__menu__list
         .ListingMain__entire__menu__list__field
           .ListingMain__entire__menu__list__field__display
-            = f.label :image, class: "ListingMain__entire__menu__list__field__display__content" do
+            // labelはフォーム部品と項目名（ラベル）を関連付ける
+            %label.ListingMain__entire__menu__list__field__display__content{for: "item_images_attributes_0_image"}
+              // カメラのアイコン
               = icon("fas", "camera", class: "ListingMain__entire__menu__list__field__display__content--image")
-            #image-box
-              = f.fields_for :images, class: "ListingMain__entire__menu__list__field__display__content--file" do |i|
-                // i.indexとすることで、ビルドされた際に振られるindexを取得できる（これをカスタムデータとして持たせることで今後のJSの処理で要素を特定していく。）
-                .js-file_group{data: {index: {id: i.index}}}
-                  %span.js-remove
-                    クリックしてファイルをアップロード
+              クリックしてファイルをアップロード
+              // image-boxというidをつける。
+              #image-box
+                // fields_forを使用することで、異なるモデルを編集できるようになる。
+                = f.fields_for :images, class: "ListingMain__entire__menu__list__field__display__content--file" do |i|
+                  // 画像ファイルを送信する際の選択ボックスを生成
+                  = i.file_field :image, class: "js-file"
+                  // i.indexとすることで、ビルドされた際に振られるindexを取得できる（これをカスタムデータとして持たせることで今後のJSの処理で要素を特定していく。）
+                  .js-file_group{data: {index: {id: i.index}}}
+                    -# %span.js-remove
+                    -#   クリックしてファイルをアップロード
           
       .ListingMain__entire__menu__separation
         

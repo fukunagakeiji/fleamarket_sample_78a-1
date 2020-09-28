@@ -5,6 +5,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :deliveryfee
   belongs_to_active_hash :shippingdays
   belongs_to_active_hash :status
+  #belongs_to :seller, class_name: "User", optional: true,foreign_key: "seller_id"
+  #belongs_to :buyer, class_name: "User", optional: true,foreign_key: "buyer_id"
   belongs_to :user, dependent: :destroy
   has_many :images, dependent: :destroy
   belongs_to :category, dependent: :destroy
@@ -23,5 +25,5 @@ class Item < ApplicationRecord
   validates :region, presence: true
   validates :days, presence: true
   validates :price, presence: true
-  validates_associated :images, presence: true
+  validates :images, presence: true
 end
