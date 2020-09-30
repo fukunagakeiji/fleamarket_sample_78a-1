@@ -89,7 +89,6 @@
         text-align: center;
         font-size: 12px;
         line-height: 1.4em;
-        width: 100%;
         &__field {
           background-color: rgb(245, 245, 245);
           display: flex;
@@ -121,6 +120,9 @@
                 margin-bottom: 8px;
                 font-size: 24px;
               }
+            }
+            .js-file {
+              
             }
           }
         }

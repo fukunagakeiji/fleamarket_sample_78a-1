@@ -25,16 +25,15 @@
               = icon("fas", "camera", class: "ListingMain__entire__menu__list__field__display__content--image")
               クリックしてファイルをアップロード
               // image-boxというidをつける。
-              #image-box
-                // fields_forを使用することで、異なるモデルを編集できるようになる。
-                = f.fields_for :images, class: "ListingMain__entire__menu__list__field__display__content--file" do |i|
-                  // 画像ファイルを送信する際の選択ボックスを生成
-                  = i.file_field :image, class: "js-file"
-                  // i.indexとすることで、ビルドされた際に振られるindexを取得できる（これをカスタムデータとして持たせることで今後のJSの処理で要素を特定していく。）
-                  .js-file_group{data: {index: {id: i.index}}}
-                    -# %span.js-remove
-                    -#   クリックしてファイルをアップロード
-          
+            #image-box
+              // fields_forを使用することで、異なるモデルを編集できるようになる。
+              = f.fields_for :images, class: "ListingMain__entire__menu__list__field__display__content--file" do |i|
+                // 画像ファイルを送信する際の選択ボックスを生成
+                = i.file_field :image, class: "js-file"
+                // i.indexとすることで、ビルドされた際に振られるindexを取得できる（これをカスタムデータとして持たせることで今後のJSの処理で要素を特定していく。）
+                .js-file_group{data: {index: {id: i.index}}}
+                  %p.js-remove
+
       .ListingMain__entire__menu__separation
         
       // 商品名
