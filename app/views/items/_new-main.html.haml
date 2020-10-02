@@ -29,10 +29,12 @@
               // fields_forを使用することで、異なるモデルを編集できるようになる。
               = f.fields_for :images, class: "ListingMain__entire__menu__list__field__display__content--file" do |i|
                 // 画像ファイルを送信する際の選択ボックスを生成
-                = i.file_field :image, class: "js-file"
+                
                 // i.indexとすることで、ビルドされた際に振られるindexを取得できる（これをカスタムデータとして持たせることで今後のJSの処理で要素を特定していく。）
                 .js-file_group{data: {index: {id: i.index}}}
+                  = i.file_field :image, class: "js-file"
                   %p.js-remove
+                    削除
 
       .ListingMain__entire__menu__separation
         
