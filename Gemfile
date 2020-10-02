@@ -38,6 +38,10 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'capistrano-rails-console'
+  # テストコードを書くためにRSpecを導入
+  gem 'rspec-rails', '~> 4.0.0.beta2'
+  # factory_botの導入
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -48,8 +52,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop', require: false
-  # テストコードを書くためにRSpecを導入
-  gem 'rspec-rails', '~> 4.0.0.beta2'
 end
 
 group :test do
