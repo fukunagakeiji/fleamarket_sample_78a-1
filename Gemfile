@@ -42,6 +42,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0.beta2'
   # factory_botの導入
   gem 'factory_bot_rails'
+  # Fakerの導入（emailや電話番号、名前などのダミーデータを作成するためのGem）
+  gem 'faker', "~> 2.8"
 end
 
 group :development do

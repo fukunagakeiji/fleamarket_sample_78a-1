@@ -1,3 +1,6 @@
+# RailsにおいてRSpecを利用する際に、共通の設定を書いておくファイル。
+# 各テスト用ファイルでこちらのファイルを読み込むことで、共通の設定やメソッドを適用する。
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
@@ -38,7 +41,8 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-
+  # 下記の記載でfactory_botによってインスタンスを作成する際に、レシーバーであるクラスのFactoryBotという記述を省略できる。
+  config.include FactoryBot::Syntax::Methods
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
