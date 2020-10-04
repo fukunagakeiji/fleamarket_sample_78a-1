@@ -15,8 +15,6 @@ class ItemsController < ApplicationController
     @item.images.new
     # # ユーザーのすべての商品である@itemsを定義。「n+1問題」を避けるために、includes(:user)を記載。
     # @items = @user.items.includes(:user)
-    #@item.brands.new
-    #@item.build_brand
   end
 
   # 商品の保存
