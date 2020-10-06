@@ -1,0 +1,16 @@
+.Footer {
+  margin-top: 50px;
+  height: auto;
+  width: 100%;
+  &__Contents {
+    margin-bottom: 15px;
+    &__Content {
+      .Link {
+        font-size: small;
+        color: white;
+        text-decoration: none;
+        margin-left: 15px;
+      }
+    }
+  }
+}

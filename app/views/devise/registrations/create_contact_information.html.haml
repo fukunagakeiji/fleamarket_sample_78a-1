@@ -1,0 +1,18 @@
+.Wrapper
+  = render "header" 
+
+  .Address
+    .Address__text
+      .Address__text__messages
+        .Address__text__messages__top
+          会員登録完了
+        .Address__text__messages__message
+          ありがとうございます。
+          %br/
+          会員登録が完了しました。
+      .Address__text__pages
+        .Address__text__pages__btn
+          =link_to "トップへ戻る", root_path, class: "btn btn-top-page"
+          =link_to "マイページへ", root_path, class: "btn btn-my-page"
+
+  = render "footer"

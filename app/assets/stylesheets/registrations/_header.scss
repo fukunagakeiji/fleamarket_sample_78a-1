@@ -1,0 +1,21 @@
+.Header {
+  padding: auto;
+  height: 150px;
+  width: 100%;
+  background-color: white;
+  max-width: 1040px;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  &__logo {
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px auto;
+    display: flex;
+    .top-logo {
+      align-items: center;
+      height: 75px;
+      color: gray;
+    }
+  }
+}
