@@ -1,4 +1,4 @@
-// トップページのフッター 
+// 商品購入確認ページのフッター 
 .Footer {
   height: 350px;
   padding: 60px 0;
@@ -34,28 +34,5 @@
     &--text {
       font-size: 14px;
     }
-  }
-}
-
-.Sell {
-  width: 120px;
-  background: #3ccace;
-  text-align: center;
-  border-radius: 4%;
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  padding: 15px;
-  &__listing {
-    text-decoration: none;
-  }
-  &__text {
-    color: #fff;
-    display: block;
-    font-size: 18px;
-    margin-bottom: 5px;
-  }
-  &__camera {
-    width: 60%;
   }
 }

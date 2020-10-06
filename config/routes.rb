@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     post 'contact_informations', to: 'users/registrations#create_contact_information'
   end
   root 'items#index'
-  #resources ：users, only[:create]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :items do
+    # itemsのidを取得するためにネストでpurchase,listingを記載(idがつくためmemberで)後でmemberに変更
+    collection do
+      get "purchase"
+      get "listing"
+    end
+  end
 end
