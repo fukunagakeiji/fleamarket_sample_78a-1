@@ -31,4 +31,4 @@ Style/FrozenStringLiteralComment:
 
 #ABCSizeチェックの基準値を調整（default’15’）
 Metrics/AbcSize:
-  Max: 20
+  Max: 30
