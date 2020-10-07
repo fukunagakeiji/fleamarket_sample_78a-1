@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    registrations: 'users/registrations',
+    registrations: 'users/registrations'
   }
   devise_scope :user do
     get 'contact_informations', to: 'users/registrations#new_contact_information'
