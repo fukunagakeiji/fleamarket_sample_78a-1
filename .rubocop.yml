@@ -28,3 +28,7 @@ Metrics/LineLength:
 #'frozen_string_literal: true'を無効
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+#ABCSizeチェックの基準値を調整（default’15’）
+Metrics/AbcSize:
+  Max: 30
