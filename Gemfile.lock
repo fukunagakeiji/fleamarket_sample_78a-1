@@ -114,10 +114,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    diff-lcs (1.4.3)
     devise-i18n (1.9.2)
       devise (>= 4.7.1)
     devise-i18n-views (0.3.7)
+    diff-lcs (1.4.3)
     erubi (1.9.0)
     erubis (2.7.0)
     excon (0.75.0)
@@ -378,12 +378,12 @@ DEPENDENCIES
   capistrano3-unicorn
   capybara (>= 2.15)
   carrierwave
-  factory_bot_rails
-  faker (~> 2.8)
-  fog-aws
   devise
   devise-i18n
   devise-i18n-views
+  factory_bot_rails
+  faker (~> 2.8)
+  fog-aws
   font-awesome-sass
   haml-rails (>= 1.0, <= 2.0.1)
   jbuilder (~> 2.7)

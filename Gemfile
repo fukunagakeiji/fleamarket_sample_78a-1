@@ -85,9 +85,6 @@ gem 'mini_magick'
 # fog-awsの導入（画像をアップロードする際、外部のストレージを選択しアップロードするのを補助してくれるGem。AWSを使用)
 gem "fog-aws"
 
-# deviseの導入
-gem "devise"
-
 # jQueryの導入
 gem "jquery-rails"
 
