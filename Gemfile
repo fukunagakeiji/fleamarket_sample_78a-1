@@ -99,3 +99,6 @@ gem "ancestry"
 
 # active_hashの導入（擬似モデルを作ることができるGem)
 gem "active_hash"
+gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
