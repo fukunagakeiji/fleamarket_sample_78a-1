@@ -6,7 +6,7 @@ describe Item do
     it "is valid with a name, explain, status_id, delivery_fee, region, days, price, user_id, category_id" do
       user = create(:user)
       category = create(:category)
-      item = FactoryBot.build(:item, user_id: user[:id], category_id: category[:id])
+      item = FactoryBot.build(:item, seller_id: user[:id], category_id: category[:id])
       # be_validはテストの対象に対してvalid?メソッドを呼んで、それが返す値によってテストの成否を判定するマッチャ。
       expect(item).to be_valid
     end
