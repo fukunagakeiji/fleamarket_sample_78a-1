@@ -13,4 +13,3 @@ describe Item do
     end
   end
 end
-

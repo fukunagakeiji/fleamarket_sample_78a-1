@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-
   # 誰が出品したかわかるようにprivateに記載
   # before_action :set_user
 
@@ -20,7 +19,6 @@ class ItemsController < ApplicationController
   # 商品の保存
   def create
     @item = Item.new(item_params)
-    binding.pry
     # 商品の保存に成功した場合、保存に失敗した場合で処理を分岐
     if @item.save
       redirect_to root_path
@@ -46,5 +44,4 @@ class ItemsController < ApplicationController
   def set_user
     @user = User.find(params[current_user.id])
   end
-
 end
