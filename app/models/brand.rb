@@ -1,3 +1,4 @@
 class Brand < ApplicationRecord
-  has_many :items
+  # アソシエーション
+  belongs_to :item
 end

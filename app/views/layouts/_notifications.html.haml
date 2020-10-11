@@ -1,0 +1,4 @@
+// フラッシュメッセージを表示するためのビューを作成
+.Notification
+  - flash.each do |key, value|
+    = content_tag :div, value, class: key

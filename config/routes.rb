@@ -7,11 +7,10 @@ Rails.application.routes.draw do
     post 'contact_informations', to: 'users/registrations#create_contact_information'
   end
   root 'items#index'
-  resources :items do
+  resources :items, only: [:index, :new, :create] do
     # itemsのidを取得するためにネストでpurchase,listingを記載(idがつくためmemberで)後でmemberに変更
     collection do
       get "purchase"
-      get "listing"
     end
   end
 end
