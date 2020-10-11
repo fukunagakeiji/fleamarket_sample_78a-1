@@ -8,11 +8,13 @@ FactoryBot.define do
     days          {"aaaaaa"}
     price         {111}
     seller_id       {1}
-    category_id   {1}
+    #category_id   {1}
     brand_id      {1}
 
     after(:build) do |item|
       item.images << FactoryBot.build(:image, item: item)
     end
+
+    association :category
   end
 end
