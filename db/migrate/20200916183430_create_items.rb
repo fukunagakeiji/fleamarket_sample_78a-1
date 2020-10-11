@@ -9,9 +9,9 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string :days, null: false
       t.string :price, null: false
       # seller(出品中)とbuyer(売却済み)に出品中に取引中(auction)を追加
-      t.reference :items, :seller, foreign_key: {to_table: :users}
-      t.reference :items, :buyer, foreign_key: {to_table: :users}
-      t.reference :items, :auction, foreign_key: {to_table: :users}
+      t.references :seller, foreign_key: {to_table: :users}
+      t.references :buyer, foreign_key: {to_table: :users}
+      t.references :auction, foreign_key: {to_table: :users}
       t.integer :category_id, null: false, foreign_key: true
       t.integer :brand_id, foreign_key: true
 
