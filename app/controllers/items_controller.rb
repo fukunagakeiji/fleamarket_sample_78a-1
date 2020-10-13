@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:edit, :update]
 
   # 商品一覧表示
   def index
@@ -25,10 +26,19 @@ class ItemsController < ApplicationController
     end
   end
 
-  # 商品編集
+  # 商品編集(編集のためのビューの表示)
   def edit
     @item = Item.find(params[:id])
     @item.images.new
+  end
+
+  # 商品編集のupdate(実際のデータ更新)
+  def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   # 商品購入
@@ -42,6 +52,10 @@ class ItemsController < ApplicationController
   def item_params
     # fields_forを利用して作成されたフォームから来る値は、○○s_attributes: [:××]という形でparamsに入る。○○は関連付く側のモデルの名前、××にはフォームに対応するカラムの名前が入る。
     params.require(:item).permit(:name, :explain, :status_id, :delivery_fee, :region, :days, :price, :seller_id, :buyer_id, :auction_id, :category_id, brands_attributes: [:name], images_attributes: [:image]).merge(seller_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end
