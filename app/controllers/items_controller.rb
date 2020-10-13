@@ -29,6 +29,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  # 商品編集
+  def edit
+  end
+
   # 商品購入
   def purchase
   end
