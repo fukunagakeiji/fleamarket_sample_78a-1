@@ -14,8 +14,6 @@ class ItemsController < ApplicationController
     @item = Item.new
     # @item.images.newにより、newアクションで定義されたItemクラスのインスタンスに関連づけられたImageクラスのインスタンスが作成される。
     @item.images.new
-    # # ユーザーのすべての商品である@itemsを定義。「n+1問題」を避けるために、includes(:user)を記載。
-    # @items = @user.items.includes(:user)
   end
 
   # 商品の保存
@@ -31,6 +29,8 @@ class ItemsController < ApplicationController
 
   # 商品編集
   def edit
+    @item = Item.find(params[:id])
+    @item.images.new
   end
 
   # 商品購入
