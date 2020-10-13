@@ -1,6 +1,4 @@
 class ItemsController < ApplicationController
-  # 誰が出品したかわかるようにprivateに記載
-  # before_action :set_user
 
   # 商品一覧表示
   def index
@@ -46,8 +44,4 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :explain, :status_id, :delivery_fee, :region, :days, :price, :seller_id, :buyer_id, :auction_id, :category_id, brands_attributes: [:name], images_attributes: [:image]).merge(seller_id: current_user.id)
   end
 
-  # itemsコントローラーの全てのアクションで@userを利用できる
-  def set_user
-    @user = User.find(params[current_user.id])
-  end
 end
