@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
 
   # 商品一覧表示
   def index
+    # N+1問題を解消するためにincludesメソッドを使用（includesメソッドを使用するとすべてのレコードを取得するためallメソッドは省略可能）
+    @items = Item.includes(:images).order("created_at DESC").limit(5)
   end
 
   # 商品出品ページへ遷移する処理

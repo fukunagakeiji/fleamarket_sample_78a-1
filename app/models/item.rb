@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   belongs_to :seller, class_name: "User", optional: true,foreign_key: "seller_id"
   belongs_to :buyer, class_name: "User", optional: true,foreign_key: "buyer_id"
   belongs_to :auction, class_name: "User", optional: true, foreign_key: "auction_id"
-  has_many :images, dependent: :destroy
+  has_many :images, foreign_key: :item_id, dependent: :destroy
   belongs_to :category, dependent: :destroy
   has_one :brand, dependent: :destroy
   has_many :comments, dependent: :destroy
