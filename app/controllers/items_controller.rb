@@ -28,7 +28,6 @@ class ItemsController < ApplicationController
 
   # 商品編集(編集のためのビューの表示)
   def edit
-    @item = Item.find(params[:id])
     @item.images.new
   end
 
