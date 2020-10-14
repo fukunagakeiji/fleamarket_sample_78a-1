@@ -28,7 +28,6 @@ class ItemsController < ApplicationController
 
   # 商品編集(編集のためのビューの表示)
   def edit
-    @item.images.new
   end
 
   # 商品編集のupdate(実際のデータ更新)
