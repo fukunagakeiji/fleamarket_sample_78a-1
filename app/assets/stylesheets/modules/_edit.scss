@@ -2,6 +2,11 @@
 @import "new-header";
 
 // 商品編集ページのメイン
+.item-image {
+  &__image {
+    height: 100px;
+  }
+}
 
 // 商品編集ページのフッター 
 @import "new-footer";

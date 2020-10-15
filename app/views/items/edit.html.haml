@@ -22,7 +22,11 @@
       .ListingMain__entire__menu__list
         .ListingMain__entire__menu__list__field
           .ListingMain__entire__menu__list__field__display
-            // labelはフォーム部品と項目名（ラベル）を関連付ける
+            - @item.images.each_with_index do |image, i|
+              -if image.persisted?
+                .item-image{data: {index: i}}
+                  = image_tag image.image.url, class: "item-image__image"
+              // labelはフォーム部品と項目名（ラベル）を関連付ける
             %label.ListingMain__entire__menu__list__field__display__content{for: "item_images_attributes_0_image"}
               // カメラのアイコン
               = icon("fas", "camera", class: "ListingMain__entire__menu__list__field__display__content--image")
