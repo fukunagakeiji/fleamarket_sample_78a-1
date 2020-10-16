@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
 
   # 商品編集のupdate(実際のデータ更新)
   def update
-    if @item.update(item_params)
+    if @item.update(item_update_params)
       redirect_to root_path
     else
       render :edit
@@ -54,6 +54,11 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  # image_attributesに_destroyキーを追加。fields_forから送られてくるこのキーを持った情報を頼りにrailsが子モデルの更新・削除を行う。
+  def item_update_params
+    params.require(:item).permit(:name, :explain, :status_id, :delivery_fee, :region, :days, :price, :seller_id, :buyer_id, :auction_id, :category_id, brands_attributes: [:name], images_attributes: [:image, :_destroy]).merge(seller_id: current_user.id)
   end
 
 end
