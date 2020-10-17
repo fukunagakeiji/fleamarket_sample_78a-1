@@ -12,11 +12,14 @@ $(document).on('turbolinks:load', ()=> {
 
   // file_fieldのnameに動的なindexをつける為の配列
   let fileIndex = [1,2,3,4];
+  // 既に使われているindexを除外
+  lastIndex = $('.js-file_group:last').data('index');
+  fileIndex.splice(0, lastIndex);
+  $('.items-image').hide();
 
   // 複数枚画像を選択できるよう実装
   $('#image-box').on('change', '.js-file', function(e) {
     // fileIndexの先頭の数字を使ってinputを作る(.appendは要素内の末尾にタグを追加する)
-    
     $('#image-box').append(buildFileField(fileIndex[0]));
     $('.ListingMain__entire__menu__list__field__display__content').attr('for', `item_images_attributes_${fileIndex[0]}_image`)
     // shift()メソッドは配列から最初の要素を削除して、その要素を返す。このメソッドは配列のlengthを変更する。
@@ -29,9 +32,15 @@ $(document).on('turbolinks:load', ()=> {
   $('#image-box').on('click', '.js-remove', function() {
     // 画像のプレビュー要素を取得
     let target_image = $('.js-file_group').data("index-id");
-    console.log(target_image);
+    // 該当indexを振られているチェックボックスを取得
+    let hiddenCheck = $(`input[data-index = "${target_image}"].items-image`);
+    // もしチェックボックスが存在すればチェックを入れる
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
+
     // removeメソッドでプレビュー画像を削除
     $(this).parent().remove();
+    $(`img[data-index = "${target_image}"]`).remove();
+
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
@@ -46,10 +55,17 @@ $(document).on('turbolinks:load', ()=> {
       let fileReader = new FileReader();
       // 画像ファイルのURLを取得
       fileReader.readAsDataURL(file);
+      // 該当indexを持つimgタグがあれば取得して変数imgに入れる（画像変更の処理）
+      if (img = $(`img[data-index = "${target_image}"]`)[0]) {
+        img.setAttribute('src', blobUrl);
+      } else { // 新規画像追加の処理
+        $('#previews').append(buildFileField(fileIndex[0]));
+        fileIndex.shift();
+        // 末尾の数に1を足した数を追加
+        fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+      };
       // 画像の読み込みが完了したらプレビュー表示
       const tagert_index = $('.js-file').length - 2
-      console.log(tagert_index)
-     
       fileReader.onload = function(e) {
         $(`[data-index-id = "${tagert_index}"]`).append($('<img>').attr({
           src: e.target.result,
