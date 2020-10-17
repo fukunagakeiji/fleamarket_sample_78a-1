@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
 
   # image_attributesに_destroyキーを追加。fields_forから送られてくるこのキーを持った情報を頼りにrailsが子モデルの更新・削除を行う。
   def item_update_params
-    params.require(:item).permit(:name, :explain, :status_id, :delivery_fee, :region, :days, :price, :seller_id, :buyer_id, :auction_id, :category_id, brands_attributes: [:name], images_attributes: [:image, :_destroy]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :explain, :status_id, :delivery_fee, :region, :days, :price, :seller_id, :buyer_id, :auction_id, :category_id, brands_attributes: [:name], images_attributes: [:image, :id, :_destroy]).merge(seller_id: current_user.id)
   end
 
 end

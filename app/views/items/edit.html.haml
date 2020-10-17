@@ -32,16 +32,20 @@
             #image-box
               // fields_forを使用することで、異なるモデルを編集できるようになる。
               = f.fields_for :images, class: "ListingMain__entire__menu__list__field__display__content--file" do |i|
-                // 画像ファイルを送信する際の選択ボックスを生成
                 // i.indexとすることで、ビルドされた際に振られるindexを取得できる（これをカスタムデータとして持たせることで今後のJSの処理で要素を特定していく。）
                 .js-file_group{data: {index: {id: i.index}}}
                   = i.file_field :image, class: "js-file"
-                  %p.js-remove
+                  - if i.object.persisted?    
+                    = i.check_box :_destroy, data: {index: i.index}, class: "items-image"
+                    = image_tag i.object.image.url, class: "item-image__image"
+                    %p.js-remove
                     削除
-            - @item.images.each_with_index do |image, i|
-              -if image.persisted?
-                .item-image{data: {index: i}}
-                  = image_tag image.image.url, class: "item-image__image"
+                -# // 新規画像追加のためのボタン
+                -# - if i.obeject.persisted?
+                -#   .js-file_group{data: {index: {id: i.index}}}
+                -#     = i.file_field :image, class: "js-file"
+                -#       %p.js-remove
+                -#         削除
 
       .ListingMain__entire__menu__separation
         
