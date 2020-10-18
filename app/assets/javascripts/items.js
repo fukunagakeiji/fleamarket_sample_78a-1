@@ -17,7 +17,7 @@ $(document).on('turbolinks:load', ()=> {
   fileIndex.splice(0, lastIndex);
   $('.items-image').hide();
 
-  // 複数枚画像を選択できるよう実装
+  // 複数枚画像をできるよう実装(商品出品の時だけ発火するように)
   $('#image-box').on('change', '.js-file', function(e) {
     // fileIndexの先頭の数字を使ってinputを作る(.appendは要素内の末尾にタグを追加する)
     $('#image-box').append(buildFileField(fileIndex[0]));
@@ -62,10 +62,10 @@ $(document).on('turbolinks:load', ()=> {
       if (img = $(`img[data-index = "${target_image}"]`)[0]) {
         img.setAttribute('src', blobUrl);
       } else { // 新規画像追加の処理
-        $('#previews').append(buildFileField(fileIndex[0]));
-        fileIndex.shift();
-        // 末尾の数に1を足した数を追加
-        fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+        // $('#previews').append(buildFileField(fileIndex[0]));
+        // fileIndex.shift();
+        // // 末尾の数に1を足した数を追加
+        // fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
         // 画像の読み込みが完了したらプレビュー表示
         const tagert_index = $('.js-file').length - 2
         fileReader.onload = function(e) {

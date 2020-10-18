@@ -43,12 +43,12 @@
                       = i.check_box :_destroy, data: {index: i.index}, class: "items-image"
                       = image_tag i.object.image.url, data: {index: i.index}, class: "item-image__image"
                       
-                    -# // 新規画像追加のためのボタン
-                    -# - if i.obeject.persisted?
-                    -#   .js-file_group{data: {index: {id: i.index}}}
-                    -#     = i.file_field :image, class: "js-file"
-                    -#       %p.js-remove
-                    -#         削除
+                  // 新規画像追加のためのボタン
+                  - if i.obeject.persisted?
+                    .js-file_group{data: {index: {id: i.index}}}
+                      = i.file_field :image, class: "js-file"
+                        %p.js-remove
+                          削除
 
       .ListingMain__entire__menu__separation
         
