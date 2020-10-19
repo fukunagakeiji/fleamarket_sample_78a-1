@@ -17,7 +17,7 @@ $(document).on('turbolinks:load', ()=> {
   fileIndex.splice(0, lastIndex);
   $('.items-image').hide();
 
-  // 画像を選択したら新規ファイルが追加される（出品機能：item/newアクション）
+  // クリックしたら新規ファイルが追加される（出品機能：item/newアクション）
   $('#image-box').on('change', '.js-file', function(e) {
     // fileIndexの先頭の数字を使ってinputを作る(.appendは要素内の末尾にタグを追加する)
     $('#image-box').append(buildFileField(fileIndex[0]));
@@ -28,26 +28,7 @@ $(document).on('turbolinks:load', ()=> {
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
   });
 
-  // // 画像を選択したら新規ファイルが追加されない（編集機能：item/editアクション）
-  // $('#image-box').on('change', '.js-file', function(e) {
-  //   // 画像のプレビュー要素を取得
-  //   const preview_image = $('.js-file_group').data("index-id");
-  //   // 該当indexを振られている画像を取得
-  //   const item_image = $(`input[data-index = "${preview_image}"].item-image__image`);
-  //   console.log(item_image);
-  //   // もしプレビュー画像がなければ発火
-  //   // if (item_image = null) {
-  //     // fileIndexの先頭の数字を使ってinputを作る(.appendは要素内の末尾にタグを追加する)
-  //     $('#image-box').append(buildFileField(fileIndex[0]));
-  //     $('.ListingMain__entire__menu__list__field__display__content').attr('for', `item_images_attributes_${fileIndex[0]}_image`)
-  //     // shift()メソッドは配列から最初の要素を削除して、その要素を返す。このメソッドは配列のlengthを変更する。
-  //     fileIndex.shift();
-  //     // 末尾の数に1足した数を追加する(.pushは配列の末尾に新しい要素を追加するためのメソッド)
-  //     fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
-  //   // };
-  // });
-
-  // 画像の削除機能
+  // 画像の削除機能（削除ボタンを押せば画像が削除される）
   $('#image-box').on('click', '.js-remove', function() {
     // 画像のプレビュー要素を取得
     const target_image = $('.js-file_group').data("index-id");
@@ -55,11 +36,21 @@ $(document).on('turbolinks:load', ()=> {
     const hiddenCheck = $(`input[data-index = "${target_image}"].items-image`);
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
-    // removeメソッドでプレビュー画像を削除
+    // removeメソッドでプレビュー画像を削除(.js-file_groupを削除)
     $(this).parent().remove();
     $(`img[data-index = "${target_image}"]`).remove();
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+  });
+
+  // 画像の編集機能（編集ボタンを押せば画像選択できる）
+  $('#image-box').on('click', '.js-edit', function() {
+    // 画像のプレビュー要素を取得
+    const preview_image = $('.js-file_group').data("index-id");
+    // 該当indexを振られている画像を取得
+    const item_image = $(`input[data-index = "${preview_image}"].item-image__image`);
+    $(item_image).on('click', '.js-file');
+    console.log(item_image)
   });
 
   // 画像のプレビュー表示機能

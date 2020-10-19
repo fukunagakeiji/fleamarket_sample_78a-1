@@ -8,5 +8,13 @@
   }
 }
 
+.js__editRemove {
+  display: flex;
+}
+
+.js-edit {
+  cursor: pointer;
+}
+
 // 商品編集ページのフッター 
 @import "new-footer";
