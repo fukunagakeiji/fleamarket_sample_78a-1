@@ -17,19 +17,35 @@ $(document).on('turbolinks:load', ()=> {
   fileIndex.splice(0, lastIndex);
   $('.items-image').hide();
 
-  // 複数枚画像をできるよう実装(商品出品の時だけ発火するように)
+  // 画像を選択したら新規ファイルが追加される（出品機能：item/newアクション）
   $('#image-box').on('change', '.js-file', function(e) {
-    // もしプレビュー画像がなければ発火
-    if (src = null) {
-      // fileIndexの先頭の数字を使ってinputを作る(.appendは要素内の末尾にタグを追加する)
-      $('#image-box').append(buildFileField(fileIndex[0]));
-      $('.ListingMain__entire__menu__list__field__display__content').attr('for', `item_images_attributes_${fileIndex[0]}_image`)
-      // shift()メソッドは配列から最初の要素を削除して、その要素を返す。このメソッドは配列のlengthを変更する。
-      fileIndex.shift();
-      // 末尾の数に1足した数を追加する(.pushは配列の末尾に新しい要素を追加するためのメソッド)
-      fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
-    };
+    // fileIndexの先頭の数字を使ってinputを作る(.appendは要素内の末尾にタグを追加する)
+    $('#image-box').append(buildFileField(fileIndex[0]));
+    $('.ListingMain__entire__menu__list__field__display__content').attr('for', `item_images_attributes_${fileIndex[0]}_image`)
+    // shift()メソッドは配列から最初の要素を削除して、その要素を返す。このメソッドは配列のlengthを変更する。
+    fileIndex.shift();
+    // 末尾の数に1足した数を追加する(.pushは配列の末尾に新しい要素を追加するためのメソッド)
+    fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
   });
+
+  // // 画像を選択したら新規ファイルが追加されない（編集機能：item/editアクション）
+  // $('#image-box').on('change', '.js-file', function(e) {
+  //   // 画像のプレビュー要素を取得
+  //   const preview_image = $('.js-file_group').data("index-id");
+  //   // 該当indexを振られている画像を取得
+  //   const item_image = $(`input[data-index = "${preview_image}"].item-image__image`);
+  //   console.log(item_image);
+  //   // もしプレビュー画像がなければ発火
+  //   // if (item_image = null) {
+  //     // fileIndexの先頭の数字を使ってinputを作る(.appendは要素内の末尾にタグを追加する)
+  //     $('#image-box').append(buildFileField(fileIndex[0]));
+  //     $('.ListingMain__entire__menu__list__field__display__content').attr('for', `item_images_attributes_${fileIndex[0]}_image`)
+  //     // shift()メソッドは配列から最初の要素を削除して、その要素を返す。このメソッドは配列のlengthを変更する。
+  //     fileIndex.shift();
+  //     // 末尾の数に1足した数を追加する(.pushは配列の末尾に新しい要素を追加するためのメソッド)
+  //     fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+  //   // };
+  // });
 
   // 画像の削除機能
   $('#image-box').on('click', '.js-remove', function() {
@@ -39,11 +55,9 @@ $(document).on('turbolinks:load', ()=> {
     const hiddenCheck = $(`input[data-index = "${target_image}"].items-image`);
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
-
     // removeメソッドでプレビュー画像を削除
     $(this).parent().remove();
     $(`img[data-index = "${target_image}"]`).remove();
-
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
@@ -70,9 +84,9 @@ $(document).on('turbolinks:load', ()=> {
         // // 末尾の数に1を足した数を追加
         // fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
         // 画像の読み込みが完了したらプレビュー表示
-        const tagert_index = $('.js-file').length - 2
+        const target_index = $('.js-file').length - 2
         fileReader.onload = function(e) {
-          $(`[data-index-id = "${tagert_index}"]`).append($('<img>').attr({
+          $(`[data-index-id = "${target_index}"]`).append($('<img>').attr({
             src: e.target.result,
             width: "150px",
             class: "preview",
