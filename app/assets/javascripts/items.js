@@ -19,13 +19,16 @@ $(document).on('turbolinks:load', ()=> {
 
   // 複数枚画像をできるよう実装(商品出品の時だけ発火するように)
   $('#image-box').on('change', '.js-file', function(e) {
-    // fileIndexの先頭の数字を使ってinputを作る(.appendは要素内の末尾にタグを追加する)
-    $('#image-box').append(buildFileField(fileIndex[0]));
-    $('.ListingMain__entire__menu__list__field__display__content').attr('for', `item_images_attributes_${fileIndex[0]}_image`)
-    // shift()メソッドは配列から最初の要素を削除して、その要素を返す。このメソッドは配列のlengthを変更する。
-    fileIndex.shift();
-    // 末尾の数に1足した数を追加する(.pushは配列の末尾に新しい要素を追加するためのメソッド)
-    fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+    // もしプレビュー画像がなければ発火
+    if (src = null) {
+      // fileIndexの先頭の数字を使ってinputを作る(.appendは要素内の末尾にタグを追加する)
+      $('#image-box').append(buildFileField(fileIndex[0]));
+      $('.ListingMain__entire__menu__list__field__display__content').attr('for', `item_images_attributes_${fileIndex[0]}_image`)
+      // shift()メソッドは配列から最初の要素を削除して、その要素を返す。このメソッドは配列のlengthを変更する。
+      fileIndex.shift();
+      // 末尾の数に1足した数を追加する(.pushは配列の末尾に新しい要素を追加するためのメソッド)
+      fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+    };
   });
 
   // 画像の削除機能
