@@ -48,9 +48,8 @@ $(document).on('turbolinks:load', ()=> {
     // 画像のプレビュー要素を取得
     const preview_image = $('.js-file_group').data("index-id");
     // 該当indexを振られている画像を取得
-    const item_image = $(`input[data-index = "${preview_image}"].item-image__image`);
-    $(item_image).on('click', '.js-file');
-    console.log(item_image)
+    const item_image = $(`#item_images_attributes_${preview_image}_image`);
+    item_image.trigger("click");
   });
 
   // 画像のプレビュー表示機能
