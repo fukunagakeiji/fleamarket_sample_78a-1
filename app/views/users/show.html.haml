@@ -50,7 +50,9 @@
         .Center__field__rightfield__top
           .Center__field__rightfield__top__informations
             .Center__field__rightfield__top__informations__name
-              guest様
+              = current_user.name
+              .Center__field__rightfield__top__informations__name__sama
+                様
             .Center__field__rightfield__top__informations__information
               %ul.Info
                 %li.Info__item 登録日: ◯◯◯◯年◯◯月◯◯日
