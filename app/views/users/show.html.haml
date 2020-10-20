@@ -1,0 +1,139 @@
+.Mypage
+  // トップページのヘッダー
+  .Top
+    // トップページのヘッダーのインフォメーション
+    .Top__info
+      // トップページのメインヘッダー
+      .Top__info__title
+        // トップページのヘッダーのFURIMAロゴ
+        .Top__info__title__inner
+          = image_tag "logo/logo.png", alt: "ヘッダーロゴ", class: "top-logo"
+
+        // トップページのヘッダーの検索ボックス
+        .Top__info__title__search
+          // form_withの引数はあとでモデル名に変更
+          = form_with url: root_path, html: {class: "Form"}, local: true do |f|
+            .Form__contents
+              = f.text_field :content, class: "Form__contents__text", placeholder: "キーワードから探す"
+              = button_tag type: 'submit', class:"Form__contents__btn" do
+                = icon "fas", "search"
+      // トップページのヘッダーのナビゲーションバー
+      .Top__info__nav
+        %ul.ListLeft
+          %li.ListLeft__item--first カテゴリー
+          %li.ListLeft__item ブランド
+      
+        %ul.ListRight
+          %li.ListRight__item--logout
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'Link'
+
+  .Center
+    .Center__field
+      .Center__field__leftfield
+        %ul.Side-bar
+          %li.Side-bar__item トップページ
+          %li.Side-bar__item マイページ
+          %li.Side-bar__item 出品する
+          %li.Side-bar__item 出品中の商品一覧
+          %li.Side-bar__item 売却済の商品一覧
+          %li.Side-bar__item コメントがついた商品一覧
+        .Center__field__leftfield__label
+          各種設定
+        %ul.Setting  
+          %li.Setting__item 会員情報の編集
+          %li.Setting__item お届け先住所の編集
+          %li.Setting__item お支払い情報の登録/確認/編集
+          %li.Setting__logout
+            = link_to destroy_user_session_path, method: :delete, class: 'Link' do
+              ログアウト
+      .Center__field__rightfield
+        .Center__field__rightfield__top
+          .Center__field__rightfield__top__informations
+            .Center__field__rightfield__top__informations__name
+              guest様
+            .Center__field__rightfield__top__informations__information
+              %ul.Info
+                %li.Info__item 登録日: ◯◯◯◯年◯◯月◯◯日
+                %li.Info__item 現在の出品数: ◯
+                %li.Info__item コメントされた数: ◯
+                %li.Info__item コメントした数: ◯
+        .Center__field__rightfield__label
+          最近出品した商品
+        .Center__field__rightfield__items
+          .Center__field__rightfield__items__lists
+            = link_to root_path, class: "Center__field__rightfield__items__lists__goods" do
+              .Center__field__rightfield__items__lists--img
+                = image_tag("pict/mike-PxJ9zkM2wdA-unsplash.jpg", alt: "ハンバーガー", class: "Center__field__rightfield__items__lists--img picture")
+              .Center__field__rightfield__items__lists--body
+                %h3.Center__field__rightfield__items__lists--body.name
+                  テスト1
+                .Center__field__rightfield__items__lists--body.details
+                  %ul
+                    %li
+                      10000円
+                    %li
+                      = icon("fas", "fa-star", class: "fa")
+                      0
+                  %p
+                    (税込み)
+          .Center__field__rightfield__items__lists
+            = link_to root_path, class: "Center__field__rightfield__items__lists__goods" do
+              .Center__field__rightfield__items__lists--img
+                = image_tag("pict/mike-PxJ9zkM2wdA-unsplash.jpg", alt: "ハンバーガー", class: "Center__field__rightfield__items__lists--img picture")
+              .Center__field__rightfield__items__lists--body
+                %h3.Center__field__rightfield__items__lists--body.name
+                  テスト2
+                .Center__field__rightfield__items__lists--body.details
+                  %ul
+                    %li
+                      7500円
+                    %li
+                      = icon("fas", "fa-star", class: "fa")
+                      0
+                  %p
+                    (税込み)
+          .Center__field__rightfield__items__lists
+            = link_to root_path, class: "Center__field__rightfield__items__lists__goods" do
+              .Center__field__rightfield__items__lists--img
+                = image_tag("pict/mike-PxJ9zkM2wdA-unsplash.jpg", alt: "ハンバーガー", class: "Center__field__rightfield__items__lists--img picture")
+              .Center__field__rightfield__items__lists--body
+                %h3.Center__field__rightfield__items__lists--body.name
+                  テスト3
+                .Center__field__rightfield__items__lists--body.details
+                  %ul
+                    %li
+                      5000円
+                    %li
+                      = icon("fas", "fa-star", class: "fa")
+                      0
+                  %p
+                    (税込み)
+
+  // トップページのフッター 
+  .Bottom
+    %ul.Contents
+      %li.Content
+        %h2.Content__head FURIMAについて
+        %ul.Content__category
+          %li 会社概要（運営会社）
+          %li プライバシーポリシー
+          %li FURIMA利用規約
+          %li ポイントに関する特約
+    
+      %li.Content
+        %h2.Content__head FURIMAを見る
+        %ul.Content__category
+          %li カテゴリー一覧
+          %li ブランド一覧
+    
+
+      %li.Content
+        %h2.Content__head ヘルプ&ガイド
+        %ul.Content__category
+          %li FURIMAガイド
+          %li FURIMAロゴ利用ガイドライン
+          %li お知らせ
+
+    .Bottom__logo
+      = image_tag "logo/logo-white.png", alt: "フッターロゴ", class: "Footer__logo--image"
+      %p.Footer__logo--text © FURIMA
