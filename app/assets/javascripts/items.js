@@ -17,15 +17,22 @@ $(document).on('turbolinks:load', ()=> {
   fileIndex.splice(0, lastIndex);
   $('.items-image').hide();
 
-  // クリックしたら新規ファイルが追加される（出品機能：item/newアクション）
+  // クリックしたら新規ファイルが追加される（出品機能：item/newアクション, 編集機能:item/editアクションの新規画像）
   $('#image-box').on('change', '.js-file', function(e) {
-    // fileIndexの先頭の数字を使ってinputを作る(.appendは要素内の末尾にタグを追加する)
-    $('#image-box').append(buildFileField(fileIndex[0]));
-    $('.ListingMain__entire__menu__list__field__display__content').attr('for', `item_images_attributes_${fileIndex[0]}_image`)
-    // shift()メソッドは配列から最初の要素を削除して、その要素を返す。このメソッドは配列のlengthを変更する。
-    fileIndex.shift();
-    // 末尾の数に1足した数を追加する(.pushは配列の末尾に新しい要素を追加するためのメソッド)
-    fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+    // thisにclass名が存在しているかどうか
+    const conpilation = $(this).hasClass('conpilation');
+    console.log(conpilation)
+    if (!conpilation) {
+      // fileIndexの先頭の数字を使ってinputを作る(.appendは要素内の末尾にタグを追加する)
+      $('#image-box').append(buildFileField(fileIndex[0]));
+      $('.ListingMain__entire__menu__list__field__display__content').attr('for', `item_images_attributes_${fileIndex[0]}_image`)
+      // shift()メソッドは配列から最初の要素を削除して、その要素を返す。このメソッドは配列のlengthを変更する。
+      fileIndex.shift();
+      // 末尾の数に1足した数を追加する(.pushは配列の末尾に新しい要素を追加するためのメソッド)
+      fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+    } else {
+      return false;
+    };
   });
 
   // 画像の削除機能（削除ボタンを押せば画像が削除される）
