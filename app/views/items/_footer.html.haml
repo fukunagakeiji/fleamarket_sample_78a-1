@@ -29,6 +29,6 @@
 
 // 出品する（カメラ画像のアイコン）
 .Sell
-  = link_to listing_items_path, class: "Sell__listing" do
+  = link_to new_item_path, class: "Sell__listing" do
     %p.Sell__text 出品する
     = image_tag("icon/icon_camera.png", alt: "出品する", class: "Sell__camera")

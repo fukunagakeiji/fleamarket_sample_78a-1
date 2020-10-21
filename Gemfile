@@ -38,6 +38,12 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'capistrano-rails-console'
+  # テストコードを書くためにRSpecを導入
+  gem 'rspec-rails', '~> 4.0.0.beta2'
+  # factory_botの導入
+  gem 'factory_bot_rails'
+  # Fakerの導入（emailや電話番号、名前などのダミーデータを作成するためのGem）
+  gem 'faker', "~> 2.8"
 end
 
 group :development do
@@ -72,8 +78,24 @@ gem "haml-rails", ">= 1.0", '<= 2.0.1'
 # FontAwesomeの導入
 gem 'font-awesome-sass'
 
+# Carrierwaveの導入
+gem 'carrierwave'
+gem 'mini_magick'
+
+# fog-awsの導入（画像をアップロードする際、外部のストレージを選択しアップロードするのを補助してくれるGem。AWSを使用)
+gem "fog-aws"
+
+# jQueryの導入
+gem "jquery-rails"
+
+# binding.pryの導入
+gem "pry-rails"
+
+# ancestryの導入（ActiveRecordモデルのレコードをツリー構造（階層）として編集することを可能にするGem）
+gem "ancestry"
+
+# active_hashの導入（擬似モデルを作ることができるGem)
+gem "active_hash"
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-
-gem 'active_hash'
