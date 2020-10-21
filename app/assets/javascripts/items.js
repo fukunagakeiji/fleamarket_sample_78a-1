@@ -19,9 +19,8 @@ $(document).on('turbolinks:load', ()=> {
 
   // クリックしたら新規ファイルが追加される（出品機能：item/newアクション, 編集機能:item/editアクションの新規画像）
   $('#image-box').on('change', '.js-file', function(e) {
-    // thisにclass名が存在しているかどうか
+    // thisがconpilationクラスを持っているかhasClassメソッドで判定
     const conpilation = $(this).hasClass('conpilation');
-    console.log(conpilation)
     if (!conpilation) {
       // fileIndexの先頭の数字を使ってinputを作る(.appendは要素内の末尾にタグを追加する)
       $('#image-box').append(buildFileField(fileIndex[0]));
@@ -53,9 +52,13 @@ $(document).on('turbolinks:load', ()=> {
   // 画像の編集機能（編集ボタンを押せば画像選択できる）
   $('#image-box').on('click', '.js-edit', function() {
     // 画像のプレビュー要素を取得
-    const preview_image = $('.js-file_group').data("index-id");
+    // const preview_image = $('.js-file_group').data("index-id");
+    const preview = $(this).parent().parent();
+    const preview_image = preview.data("index-id");
+    console.log(preview_image)
     // 該当indexを振られている画像を取得
     const item_image = $(`#item_images_attributes_${preview_image}_image`);
+    console.log(item_image)
     item_image.trigger("click");
   });
 
@@ -69,7 +72,10 @@ $(document).on('turbolinks:load', ()=> {
       // FileReaderは選択した画像を読み込むためのオブジェクト
       const fileReader = new FileReader();
       // 画像のプレビュー要素を取得
-      const target_image = $('.js-file_group').data("index-id");
+      const target = $(this).parent();
+      const target_image = target.data("index-id");
+      console.log(target)
+      console.log(target_image)
       // 画像ファイルのURLを取得
       fileReader.readAsDataURL(file);
       // 該当indexを持つimgタグがあれば取得して変数imgに入れる（画像変更の処理）
