@@ -37,7 +37,8 @@ $(document).on('turbolinks:load', ()=> {
   // 画像の削除機能（削除ボタンを押せば画像が削除される）
   $('#image-box').on('click', '.js-remove', function() {
     // 画像のプレビュー要素を取得
-    const target_image = $('.js-file_group').data("index-id");
+    const destroy = $(this).parent().parent();
+    const target_image = destroy.data("index-id");
     // 該当indexを振られているチェックボックスを取得
     const hiddenCheck = $(`input[data-index = "${target_image}"].items-image`);
     // もしチェックボックスが存在すればチェックを入れる
@@ -52,7 +53,6 @@ $(document).on('turbolinks:load', ()=> {
   // 画像の編集機能（編集ボタンを押せば画像選択できる）
   $('#image-box').on('click', '.js-edit', function() {
     // 画像のプレビュー要素を取得
-    // const preview_image = $('.js-file_group').data("index-id");
     const preview = $(this).parent().parent();
     const preview_image = preview.data("index-id");
     console.log(preview_image)
