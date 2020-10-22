@@ -20,8 +20,9 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     # 商品の保存に成功した場合、保存に失敗した場合で処理を分岐
     if @item.save
-      redirect_to root_path
+      redirect_to root_path 
     else
+      @item.images.new
       render :new
     end
   end
@@ -35,6 +36,7 @@ class ItemsController < ApplicationController
     if @item.update(item_update_params)
       redirect_to root_path
     else
+      @item.images.new
       render :edit
     end
   end

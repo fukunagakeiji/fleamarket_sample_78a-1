@@ -55,10 +55,8 @@ $(document).on('turbolinks:load', ()=> {
     // 画像のプレビュー要素を取得
     const preview = $(this).parent().parent();
     const preview_image = preview.data("index-id");
-    console.log(preview_image)
     // 該当indexを振られている画像を取得
     const item_image = $(`#item_images_attributes_${preview_image}_image`);
-    console.log(item_image)
     item_image.trigger("click");
   });
 
@@ -74,8 +72,6 @@ $(document).on('turbolinks:load', ()=> {
       // 画像のプレビュー要素を取得
       const target = $(this).parent();
       const target_image = target.data("index-id");
-      console.log(target)
-      console.log(target_image)
       // 画像ファイルのURLを取得
       fileReader.readAsDataURL(file);
       // 該当indexを持つimgタグがあれば取得して変数imgに入れる（画像変更の処理）
