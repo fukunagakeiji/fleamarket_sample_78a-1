@@ -18,6 +18,10 @@ class ItemsController < ApplicationController
     # @items = @user.items.includes(:user)
   end
 
+  def show
+    @items = Item.find(params[:id])
+  end
+
   # 商品の保存
   def create
     @item = Item.new(item_params)
