@@ -49,10 +49,8 @@
                 // 新規画像追加のためのファイル
                 .js-file_group{data: {index: {id: @item.images.length}}}
                   %input.js-file{type: "file", name: "item[images_attributes][#{@item.images.length}][image]", id: "item[images_attributes][#{@item.images.length}][image]"}
-                -# .js-file_group{data: {index: {id: i.index}}}
-                -# = i.file_field :image, class: "js-file"
-                -# %p.js-remove
-                -#   削除
+                    %p.js-remove
+                      削除
 
       .ListingMain__entire__menu__separation
         
