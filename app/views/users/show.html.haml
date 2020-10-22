@@ -31,8 +31,12 @@
     .Center__field
       .Center__field__leftfield
         %ul.Side-bar
-          %li.Side-bar__item トップページ
-          %li.Side-bar__item マイページ
+          %li.Side-bar__toppage
+            = link_to root_path, class: 'Link' do
+              トップページ
+          %li.Side-bar__mypage
+            = link_to user_path, class: 'Link' do
+              マイページ
           %li.Side-bar__item 出品する
           %li.Side-bar__item 出品中の商品一覧
           %li.Side-bar__item 売却済の商品一覧
