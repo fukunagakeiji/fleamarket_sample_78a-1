@@ -13,6 +13,6 @@
       .Address__text__pages
         .Address__text__pages__btn
           =link_to "トップへ戻る", root_path, class: "btn btn-top-page"
-          =link_to "マイページへ", root_path, class: "btn btn-my-page"
+          =link_to "マイページへ", user_path(current_user.id), class: "btn btn-my-page"
 
   = render "registrationfooter"
