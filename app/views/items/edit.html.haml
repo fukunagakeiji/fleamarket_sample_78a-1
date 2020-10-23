@@ -24,7 +24,7 @@
           .ListingMain__entire__menu__list__field__display
             
             // labelはフォーム部品と項目名（ラベル）を関連付ける
-            %label.ListingMain__entire__menu__list__field__display__content{for: "item_images_attributes_0_image"}
+            %label.ListingMain__entire__menu__list__field__display__content{for: "item_images_attributes_#{@item.images.length}_image"}
               // カメラのアイコン
               = icon("fas", "camera", class: "ListingMain__entire__menu__list__field__display__content--image")
               クリックしてファイルをアップロード
@@ -40,7 +40,7 @@
                       // 保存済みの画像レコードを削除するためのチェックボックス(このチェックボックスをonにすることで、railsが該当レコードのidを検索し削除する)
                       = i.check_box :_destroy, data: {index: i.index}, class: "items-image"
                       = image_tag i.object.image.url, data: {index: i.index}, class: "item-image__image"
-                    
+                  
                     .js__editRemove
                       %p.js-edit
                         編集
@@ -49,7 +49,7 @@
                     
                 // 新規画像追加のためのファイル
                 .js-file_group{data: {index: {id: @item.images.length}}}
-                  %input.js-file{type: "file", name: "item[images_attributes][#{@item.images.length}][image]", id: "item[images_attributes][#{@item.images.length}][image]"}
+                  %input.js-file{type: "file", name: "item[images_attributes][#{@item.images.length}][image]", id: "item_images_attributes_#{@item.images.length}_image"}
                     %p.js-remove
                       削除
 

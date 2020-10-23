@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', ()=> {
     const html = `<div data-index-id="${index}" class="js-file_group">
                       <input class="js-file" type="file"
                       name="item[images_attributes][${index}][image]"
-                      id="item_images_attributes_${index}_image"><br>
+                      id="item_images_attributes_${fileIndex[0]}_image"><br>
                       <div class="js-remove">削除</div>
                     </div>`;
     return html;
@@ -24,6 +24,7 @@ $(document).on('turbolinks:load', ()=> {
     if (!conpilation) {
       // fileIndexの先頭の数字を使ってinputを作る(.appendは要素内の末尾にタグを追加する)
       $('#image-box').append(buildFileField(fileIndex[0]));
+      // ここの`item_images_attributes_${fileIndex[0]}_image`)とconst htmlのid="item_images_attributes_${index}_image">が一緒になればOK
       $('.ListingMain__entire__menu__list__field__display__content').attr('for', `item_images_attributes_${fileIndex[0]}_image`)
       // shift()メソッドは配列から最初の要素を削除して、その要素を返す。このメソッドは配列のlengthを変更する。
       fileIndex.shift();
