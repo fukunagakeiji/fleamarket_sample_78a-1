@@ -36,16 +36,17 @@
                   // i.indexとすることで、ビルドされた際に振られるindexを取得できる（これをカスタムデータとして持たせることで今後のJSの処理で要素を特定していく。）
                   .js-file_group{data: {index: {id: i.index}}}
                     = i.file_field :image, class: "js-file conpilation"
+                    - if i.object.persisted?
+                      // 保存済みの画像レコードを削除するためのチェックボックス(このチェックボックスをonにすることで、railsが該当レコードのidを検索し削除する)
+                      = i.check_box :_destroy, data: {index: i.index}, class: "items-image"
+                      = image_tag i.object.image.url, data: {index: i.index}, class: "item-image__image"
+                    
                     .js__editRemove
                       %p.js-edit
                         編集
                       %p.js-remove
                         削除
-
-                    - if i.object.persisted?
-                      // 保存済みの画像レコードを削除するためのチェックボックス(このチェックボックスをonにすることで、railsが該当レコードのidを検索し削除する)
-                      = i.check_box :_destroy, data: {index: i.index}, class: "items-image"
-                      = image_tag i.object.image.url, data: {index: i.index}, class: "item-image__image"
+                    
                 // 新規画像追加のためのファイル
                 .js-file_group{data: {index: {id: @item.images.length}}}
                   %input.js-file{type: "file", name: "item[images_attributes][#{@item.images.length}][image]", id: "item[images_attributes][#{@item.images.length}][image]"}
