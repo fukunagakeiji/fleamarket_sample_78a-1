@@ -13,7 +13,7 @@ $(document).on('turbolinks:load', ()=> {
   // file_fieldのnameに動的なindexをつける為の配列
   const fileIndex = [1,2,3,4];
   // 既に使われているindexを除外
-  lastIndex = $('.js-file_group:last').data('index');
+  lastIndex = $('.js-file_group:last').data('index-id');
   fileIndex.splice(0, lastIndex);
   $('.items-image').hide();
 
@@ -75,6 +75,7 @@ $(document).on('turbolinks:load', ()=> {
       // 画像ファイルのURLを取得
       fileReader.readAsDataURL(file);
       // 該当indexを持つimgタグがあれば取得して変数imgに入れる（画像変更の処理）
+      console.log('target_image:', target_image);
       if (img = $(`img[data-index = "${target_image}"]`)[0]) {
         img.setAttribute('src', blobUrl);
       } else { // 新規画像追加の処理
