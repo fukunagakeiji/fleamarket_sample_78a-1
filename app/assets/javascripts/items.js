@@ -32,7 +32,7 @@ $(document).on('turbolinks:load', ()=> {
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
     } else {
       return false;
-    };
+    }
   });
 
   // 画像の削除機能（削除ボタンを押せば画像が削除される）

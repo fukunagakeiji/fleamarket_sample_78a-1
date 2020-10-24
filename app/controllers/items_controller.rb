@@ -62,5 +62,4 @@ class ItemsController < ApplicationController
   def item_update_params
     params.require(:item).permit(:name, :explain, :status_id, :delivery_fee, :region, :days, :price, :seller_id, :buyer_id, :auction_id, :category_id, brands_attributes: [:name], images_attributes: [:image, :id, :_destroy]).merge(seller_id: current_user.id)
   end
-
 end
