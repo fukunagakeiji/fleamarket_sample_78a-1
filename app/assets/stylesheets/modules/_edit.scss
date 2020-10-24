@@ -1,0 +1,24 @@
+// 商品編集ページのヘッダー
+@import "new-header";
+
+// 商品編集ページのメイン
+.item-image {
+  &__image {
+    height: 100px;
+  }
+}
+
+.preview-edit {
+  display: flex;
+}
+
+.js__editRemove {
+  display: flex;
+}
+
+.js-edit {
+  cursor: pointer;
+}
+
+// 商品編集ページのフッター 
+@import "new-footer";
