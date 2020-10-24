@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :new, :create, :edit, :update] do
     # itemsのidを取得するためにネストでpurchaseを記載(idがつくためmemberで)後でmemberに変更
     collection do
+      get "category"
       get "purchase"
     end
   end
