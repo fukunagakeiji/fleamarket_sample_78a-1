@@ -6,8 +6,7 @@ class User < ApplicationRecord
 
   validates :name, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday, presence: true
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_EMAIL_REGEX.freeze
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
 
   has_one :contact_information
