@@ -19,9 +19,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-    #@items = Item.find(params[:id])
     @items = Item.new
-    #@image = Image.find(params[:id])
+    # @image = Image.find(params[:id])
   end
 
   # 商品の保存
