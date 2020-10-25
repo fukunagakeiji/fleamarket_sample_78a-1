@@ -2,7 +2,6 @@
   .Top {
     height: 100px;
     padding: 0 60px;
-  
     // トップページのヘッダーのインフォメーション
     &__info {
       max-width: 1040px;
@@ -22,7 +21,6 @@
           width: calc(100% - 26px);
           margin-top: auto;
         }
-  
         .Form__contents {
           display: flex;
           &__text {
@@ -262,14 +260,12 @@
       }
     }
   }
-
   .Bottom {
     height: 350px;
     padding: 60px 0;
     color: #fff;
     background-color: #272727;
     text-align: center;
-  
     .Contents {
       max-width: 840px;
       margin: 0 auto;

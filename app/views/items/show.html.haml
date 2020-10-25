@@ -1,0 +1,165 @@
+= render "header"
+
+.container
+  .container__product-details
+    %h1.container__product-details__product-name
+      /= @product.title
+      テスト
+    .container__product-details__main
+      .container__product-details__main__images
+        .container__product-details__main__images__display
+          %ul.container__product-details__main__images__display__top
+            %li.container__product-details__main__images__display__top__slide-image
+              = image_tag("pict/mike-PxJ9zkM2wdA-unsplash.jpg",  class: "picture")
+          %ul.container__product-details__main__images__display__down
+            %li.container__product-details__main__images__display__down__thumbnail-image
+              = image_tag("pict/mike-PxJ9zkM2wdA-unsplash.jpg", class: "picture")
+      %table.container__product-details__main__detail
+        %tbody
+          %tr
+            %th
+              出品者
+            %td
+              /= link_to @product.user.nickname, ""
+              もつ太郎
+          %tr
+            %th
+              カテゴリー
+            %td.category
+              = link_to "" do
+                .category
+                /  %span
+                /    = 親カテゴリーのインスタンス
+                food
+              = link_to "" do
+                .category
+                /    %span
+                /      = 子カテゴリーのインスタンス
+                nabe
+              = link_to "" do
+                .category
+                /    %span
+                /      = 孫カテゴリーのインスタンス
+          %tr
+            %th
+              ブランド
+            %td
+              サンプル
+          %tr
+            %th
+              商品のサイズ
+            %td
+              /= @item.◯◯
+              意外と大きい
+          %tr
+            %th
+              商品の状態
+            %td
+              /= @item.◯◯
+              熱々
+          %tr
+            %th
+              配送料の負担
+            %td
+              /= @item.◯◯
+              お客様負担
+          %tr
+            %th
+              配送元地域
+            %td
+              /= link_to @item.◯◯ ""
+              =link_to "大名", "", class: "Link"
+          %tr
+            %th
+              発送日の目安
+            %td
+              /= @item.◯◯
+              30分以内
+
+    .container__product-details__price
+      %span.container__product-details__price__amount
+        ¥
+        /= @item.◯◯
+        1490
+      %span.container__product-details__price__tax
+        (税込)
+      %span.container__product-details__price__delivery-fee
+        送料込み
+    .container__product-details__message
+      if文でボタンやらを表示（購入ボタンやら）
+    .container__product-details__product-description
+      %p.container__product-details__product-description__inner
+        /= @item.◯◯
+        説明文をだらだらと表示
+    .container__product-details__buttons
+      .container__product-details__buttons__btn
+        %button.container__product-details__buttons__btn__star
+          %i.far.fa-star
+          %span
+            お気に入り
+          %span
+            = rand (1000)
+        %button.container__product-details__buttons__btn__report
+          %i.far.fa-flag
+          %span
+            不適切な商品の報告
+
+  .container__comment
+    .container__comment__container
+      %form.container__comment__container__message-form
+        %p.container__comment__container__message-form__attention
+          相手のことを考え丁寧なコメントを心がけましょう。
+          %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textarea.container__comment__container__message-form__text
+        %button.container__comment__container__message-form__comment-btn
+          %span
+            コメントする
+
+  %ul.container__product-link
+    %li.container__product-link__prev
+      = link_to "" do
+        %i.fas.fa-chevron-left
+        前の商品
+    %li.container__product-link__next
+      = link_to "" do
+        次の商品
+        %i.fas.fa-chevron-right
+
+  .container__other-products
+    .container__other-products__same-category
+      %h2.container__other-products__same-category__title
+        = link_to "foodをもっと見る", "", class: "container__other-products__same-category__title__link"
+      .container__other-products__same-category__products
+        = link_to items_path, class: "container__other-products__same-category__products__list__goods" do
+          .container__other-products__same-category__products__list__goods--img
+            = image_tag("pict/mike-PxJ9zkM2wdA-unsplash.jpg", class: "picture")
+          .container__other-products__same-category__products__list__goods--body
+            %h3.container__other-products__same-category__products__list__goods--body.name
+              ハンバーガー
+            .container__other-products__same-category__products__list__goods--body.details
+              %ul
+                %li
+                  780
+                  円
+                %li
+                  = icon("fas", "fa-star", class: "fa")
+                  0
+              %p
+                (税込み)
+        /- @products.each do |product|
+        /  .container__other-products__same-category__products__product
+        /    = link_to product_path(product.id), class:".container__other-products__same-category__products__product__link" do
+        /      %figure.container__other-products__same-category__products__product__link__image
+        /        = image_tag src= product.product_images.first.image_url, size: "220x220"
+        /      .container__other-products__same-category__products__product__link__body
+        /        %h3.container__other-products__same-category__products__product__link__body__name
+        /          = product.title
+        /        .container__other-products__same-category__products__product__link__body__num
+        /          .container__other-products__same-category__products__product__link__body__num__price
+        /            ¥
+        /            = product.price
+
+
+  =render "footer"
+  /%nav
+  /= render "layouts/footer-black"
