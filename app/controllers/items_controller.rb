@@ -46,6 +46,18 @@ class ItemsController < ApplicationController
   def purchase
   end
 
+  # カテゴリー
+  def category
+    # カテゴリーの非同期通信
+    respond_to do |format|
+      format.html { redirect_to :root}
+      format.json  do 
+        # 子カテゴリーを@childrenに代入
+        @childrens = Category.find(params[:parent_id]).children
+      end
+    end
+  end
+
   # クラス外から呼び出すことのできないメソッド
   private
 

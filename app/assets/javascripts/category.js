@@ -6,7 +6,7 @@ $('#parent_category').change(function() {
   if (parentValue.length !== "") {
     $.ajax( {
       type: 'GET',
-      url: '',
+      url: '/items/category',
       // サーバーに送信する値
       data: { parent_id: parentValue },
       // サーバーから返されるデータの型を指定
