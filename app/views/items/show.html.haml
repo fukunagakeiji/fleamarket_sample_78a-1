@@ -95,9 +95,9 @@
       .container__product-details__buttons__btn
         %button.container__product-details__buttons__btn__star
           %i.far.fa-star
-          %span
+          %span.Like
             お気に入り
-          %span
+          %span.Like
             = rand (1000)
         %button.container__product-details__buttons__btn__report
           %i.far.fa-flag
@@ -112,16 +112,16 @@
           %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
         %textarea.container__comment__container__message-form__text
         %button.container__comment__container__message-form__comment-btn
-          %span
+          %span.comment
             コメントする
 
   %ul.container__product-link
     %li.container__product-link__prev
-      = link_to "" do
+      = link_to "", class: "Link" do
         %i.fas.fa-chevron-left
         前の商品
     %li.container__product-link__next
-      = link_to "" do
+      = link_to "", class: "Link" do
         次の商品
         %i.fas.fa-chevron-right
 
