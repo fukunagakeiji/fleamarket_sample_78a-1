@@ -51,9 +51,13 @@ class ItemsController < ApplicationController
     # カテゴリーの非同期通信
     respond_to do |format|
       format.html { redirect_to :root}
-      format.json  do 
-        # 子カテゴリーを@childrenに代入
-        @childrens = Category.find(params[:parent_id]).children
+      format.json  do
+        if params[:parent_id]
+          # 子カテゴリーを@childrenに代入
+          @childrens = Category.find(params[:parent_id]).children
+        elsif params[:children_id]
+          @grandChilds = Category.find(params[:children_id]).children
+        end
       end
     end
   end
