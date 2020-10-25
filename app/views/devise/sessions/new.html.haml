@@ -1,33 +1,33 @@
-.Wrapper
-  .Header
-    .Header__logo
+.LoginWrapper
+  .LoginHeader
+    .LoginHeader__logo
       = image_tag "logo/logo.png", alt: "ヘッダーロゴ", class: "top-logo"
-  .Main
-    .Main__form
+  .LoginMain
+    .LoginMain__form
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .Main__form__field
+        .LoginMain__form__field
           = f.label :email, "メールアドレス", class: 'label'
           %br/
           = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'email'
-        .Main__form__field
+        .LoginMain__form__field
           = f.label :password, "パスワード", class: 'label'
           %br/
           = f.password_field :password, autocomplete: "current-password", class: 'password'
         - if devise_mapping.rememberable?
-          .Main__form__field
+          .LoginMain__form__field
             = f.check_box :remember_me
             = f.label :remember_me
-        .Main__form__actions
+        .LoginMain__form__actions
           = f.submit "ログイン", class:'button'
-  .Footer
-    .Footer__Contents
-      .Footer__Contents__Content
+  .LoginFooter
+    .LoginFooter__Contents
+      .LoginFooter__Contents__Content
         = link_to root_path, class: "Link" do
           プライバシーポリシー
         = link_to root_path, class: "Link" do
           FURIMA利用規約
         = link_to root_path, class: "Link" do
           特定商取引に関する表記
-    .Footer__logo
-      = image_tag "logo/logo-white.png", alt: "フッターロゴ", class: "Footer__logo--image"
-      %p.Footer__logo--text © FURIMA
+    .LoginFooter__logo
+      = image_tag "logo/logo-white.png", alt: "フッターロゴ", class: "LoginFooter__logo--image"
+      %p.LoginFooter__logo--text © FURIMA

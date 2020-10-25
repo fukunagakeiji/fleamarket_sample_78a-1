@@ -16,6 +16,11 @@ class ItemsController < ApplicationController
     @item.images.new
   end
 
+  def show
+    @items = Item.new
+    # @image = Image.find(params[:id])
+  end
+
   # 商品の保存
   def create
     @item = Item.new(item_params)

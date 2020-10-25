@@ -1,56 +1,56 @@
-.Wrapper
-  = render "header"
+.RegistrationWrapper
+  = render "registrationheader"
 
-  .Main
-    .Main__title
+  .RegistrationMain
+    .RegistrationMain__title
       会員情報入力
-    .Main__form
+    .RegistrationMain__form
       = form_for(@user, url: user_registration_path) do |f|
         = render "devise/shared/error_messages", resource: @user
-        .Main__form__field
+        .RegistrationMain__form__field
           = f.label :name, "ニックネーム", class: 'label'
           = f.label "必須", class: 'must'
           %br/
           = f.text_field :name, autofocus: true, class:'nickname', :placeholder => "例)フリマ太郎"
-        .Main__form__field
+        .RegistrationMain__form__field
           = f.label :email, "メールアドレス", class: 'label'
           = f.label "必須", class: 'must'
           %br/
           = f.email_field :email, autocomplete: "email", class:'email', :placeholder => "PC・携帯どちらでも可"
-        .Main__form__field
+        .RegistrationMain__form__field
           = f.label :encrypted_password, "パスワード", class: 'label'
           = f.label "必須", class: 'must'
           %br/
           = f.password_field :password, autocomplete: "new-password", class:'password', :placeholder => "7文字以上の英数字"
-        .Main__form__field
+        .RegistrationMain__form__field
           = f.label :password_confirmation, "確認用パスワード", class: 'label'
           = f.label "必須", class: 'must'
           %br/
           = f.password_field :password_confirmation, autocomplete: "new-password", class:'password-conf', :placeholder => "もう一度入力してください"
-        .Main__form__field__name
-          .Main__form__field__name__family
+        .RegistrationMain__form__field__name
+          .RegistrationMain__form__field__name__family
             = f.label :family_name, "お名前", class: 'label'
             = f.label "必須", class: 'must'
             %br/
             = f.text_field :family_name, :placeholder => "例)振間", class:'family-name'
-          .Main__form__field__name__first
+          .RegistrationMain__form__field__name__first
             %br/
             = f.text_field :first_name, :placeholder => "例)太朗", class:'first-name'
-        .Main__form__field__kana
-          .Main__form__field__kana__family
+        .RegistrationMain__form__field__kana
+          .RegistrationMain__form__field__kana__family
             = f.label :family_name_kana, "お名前カナ", class: 'label'
             = f.label "必須", class: 'must'
             %br/
             = f.text_field :family_name_kana, :placeholder => "例)フリマ", class:'family-name-kana'
-          .Main__form__field__kana__first
+          .RegistrationMain__form__field__kana__first
             %br/
             = f.text_field :first_name_kana, :placeholder => "例)タロウ", class:'first-name-kana'
-        .Main__form__field
+        .RegistrationMain__form__field
           = f.label :birthday, "生年月日", class: 'label'
           = f.label "必須", class: 'must'
           %br/
-          = f.date_select :birthday, {use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)}, {class:'birthday'}
-        .Main__form__actions
+          = f.date_select :birthday, {use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), prompt:"--", default: Date.new(1989, 1, 1)}, {class:'birthday'}
+        .RegistrationMain__form__actions
           = f.submit "次へ進む", class:'button'
 
-  = render "footer"
+  = render "registrationfooter"

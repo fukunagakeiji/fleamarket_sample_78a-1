@@ -1,7 +1,9 @@
-.Wrapper {
-  .Main {
+.RegistrationWrapper {
+  background-color: #eee;
+  .RegistrationMain {
     width: 700px;
     margin: 0 auto;
+    background-color: #fff;
     &__title {
       height: 70px;
       text-align: center;
@@ -122,7 +124,7 @@
       &__actions {
         text-align: center;
         .button {
-          width: 100px;
+          width: 50%;
           height: 48px;
           background-color: #77e6e6;
           border: none;
