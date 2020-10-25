@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
-  # 誰が出品したかわかるようにprivateに記載
-  # before_action :set_user
+  before_action :set_item, only: [:edit, :update]
 
   # 商品一覧表示
   def index
@@ -14,8 +13,6 @@ class ItemsController < ApplicationController
     @item = Item.new
     # @item.images.newにより、newアクションで定義されたItemクラスのインスタンスに関連づけられたImageクラスのインスタンスが作成される。
     @item.images.new
-    # # ユーザーのすべての商品である@itemsを定義。「n+1問題」を避けるために、includes(:user)を記載。
-    # @items = @user.items.includes(:user)
   end
 
   def show
@@ -28,9 +25,24 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     # 商品の保存に成功した場合、保存に失敗した場合で処理を分岐
     if @item.save
+      redirect_to root_path 
+    else
+      @item.images.new
+      render :new
+    end
+  end
+
+  # 商品編集(編集のためのビューの表示)
+  def edit
+  end
+
+  # 商品編集のupdate(実際のデータ更新)
+  def update
+    if @item.update(item_update_params)
       redirect_to root_path
     else
-      render :new
+      @item.images.new
+      render :edit
     end
   end
 
@@ -47,8 +59,12 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :explain, :status_id, :delivery_fee, :region, :days, :price, :seller_id, :buyer_id, :auction_id, :category_id, brands_attributes: [:name], images_attributes: [:image]).merge(seller_id: current_user.id)
   end
 
-  # itemsコントローラーの全てのアクションで@userを利用できる
-  def set_user
-    @user = User.find(params[current_user.id])
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  # image_attributesに_destroyキーを追加。fields_forから送られてくるこのキーを持った情報を頼りにrailsが子モデルの更新・削除を行う。
+  def item_update_params
+    params.require(:item).permit(:name, :explain, :status_id, :delivery_fee, :region, :days, :price, :seller_id, :buyer_id, :auction_id, :category_id, brands_attributes: [:name], images_attributes: [:image, :id, :_destroy]).merge(seller_id: current_user.id)
   end
 end

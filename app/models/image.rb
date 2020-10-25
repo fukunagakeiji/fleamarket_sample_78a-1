@@ -1,6 +1,6 @@
 class Image < ApplicationRecord
   # アソシエーション
-  belongs_to :item, optional: true, foreign_key: :image_id
+  belongs_to :item, optional: true
 
   mount_uploader :image, ImageUploader
 
