@@ -38,7 +38,14 @@ $(function() {
   // 親セレクタを変更したら子要素が発火
   $('#parent_category').change(function() {
     // 選択した親要素の値を取得
-    const parentValue = $('#parent_category').val();
+    let parentValue = $('#parent_category').val();
+    // 選択した子・孫要素の値を取得
+    let childValue = $('#item_category_id').val();
+    // もし、親セレクタを選択し直した際（すでに子・孫セレクタがある場合）
+    if (childValue !== "undefined" ) {
+      $('.ListingMain__entire__menu__form__list__input__child').remove();
+      $('.ListingMain__entire__menu__form__list__input__grandchild').remove();
+    }
     // 初期値（"選択してください")以外が選択されたらajaxを開始
     if (parentValue.length !== "") {
       $.ajax( {
@@ -53,7 +60,6 @@ $(function() {
       .done(function(data) {
         // selectタグを生成してビューにappendする
         let child_field = build_childHTML
-        console.log(child_field)
         $('#parent_box').append(child_field);
         // jbuilderから取得したデータを1件ずつoptionタグにappendする(forEachメソッドは与えられた関数を配列に含まれる各要素に対して一度ずつ呼び出す)
         data.forEach(function(e) {
@@ -71,8 +77,7 @@ $(function() {
   // 子セレクタを変更したら孫要素が発火
   $(document).on('change', '.ListingMain__entire__menu__form__list__input__child', function() {
     // 選択した子カテゴリーの値を取得する
-    let childValue = $('.ListingMain__entire__menu__form__list__input__child').val();
-    console.log(childValue)
+    let childValue = $('#item_category_id').val();
     // 初期値("")以外が選択されたらajaxを開始
     if (childValue.length !== "") {
       $.ajax( {
@@ -87,12 +92,10 @@ $(function() {
       .done(function(grandchild_data) {
         // selectタグを生成してビューにappendする
         let grandchild_field = build_grandchildHTML
-        console.log(grandchild_field)
         $('#parent_box').append(grandchild_field);
         // jbuilderから取得したデータを1件ずつoptionタグにappendする
         grandchild_data.forEach(function (grandchild_e) {
           let option_html = build_Option(grandchild_e);
-          console.log(option_html)
           $(".ListingMain__entire__menu__form__list__input__grandchild").append(option_html);
         });
       })
