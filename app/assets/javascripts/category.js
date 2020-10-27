@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', ()=> {
   // 子のselectタグを追加
   function build_childHTML() {
     let child_field = `<select class="ListingMain__entire__menu__form__list__input__child"
@@ -47,7 +47,7 @@ $(function() {
       $('.ListingMain__entire__menu__form__list__input__grandchild').remove();
     }
     // 初期値（"選択してください")以外が選択されたらajaxを開始
-    if (parentValue.length !== "") {
+    if (parentValue.length !== 0) {
       $.ajax( {
         type: 'GET',
         url: '/items/category',
