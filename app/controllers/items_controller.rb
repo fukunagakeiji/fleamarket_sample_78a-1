@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :update]
+  before_action :set_item, only: [:edit, :update, :destroy]
   before_action :set_parents, only: [:new, :create, :edit, :update]
 
   # 商品一覧表示
@@ -49,8 +49,9 @@ class ItemsController < ApplicationController
 
   # 商品削除
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
+    if current_user.id == @item.seller_id
+      @item.destroy
+    end
   end
 
   # 商品購入
