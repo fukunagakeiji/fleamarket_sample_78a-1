@@ -40,10 +40,10 @@ class ItemsController < ApplicationController
   # 商品編集のupdate(実際のデータ更新)
   def update
     if @item.update(item_update_params)
-      redirect_to root_path
+      redirect_to root_path, notice: "商品の編集が完了しました"
     else
       @item.images.new
-      render :edit
+      render :edit, notice: "商品の編集に失敗しました"
     end
   end
 
