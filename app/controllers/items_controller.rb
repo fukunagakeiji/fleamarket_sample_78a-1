@@ -47,6 +47,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  # 商品削除
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+  end
+
   # 商品購入
   def purchase
   end

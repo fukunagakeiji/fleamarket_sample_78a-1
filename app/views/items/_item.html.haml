@@ -23,7 +23,7 @@
 
           // もし、ログインしているユーザーのidと出品者のidが等しければ削除ボタンを表示
           - if user_signed_in? && current_user.id == item.seller_id
-            = link_to "削除する", 
+            = link_to "削除する", item_path(item), class: "delete-function", method: :delete
 
   // buyer_idが埋まっていたら売り切れを表示する
 - else
