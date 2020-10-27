@@ -26,10 +26,10 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     # 商品の保存に成功した場合、保存に失敗した場合で処理を分岐
     if @item.save
-      redirect_to root_path 
+      redirect_to root_path, notice: "商品が出品されました"
     else
       @item.images.new
-      render :new
+      render :new, notice: "商品が出品されませんでした"
     end
   end
 
@@ -49,8 +49,10 @@ class ItemsController < ApplicationController
 
   # 商品削除
   def destroy
-    if current_user.id == @item.seller_id
-      @item.destroy
+    if current_user.id == @item.seller_id && @item.destroy
+      redirect_to root_path, notice: "商品が削除されました"
+    else
+      render :index, notice: "商品の削除に失敗しました"
     end
   end
 
