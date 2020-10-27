@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update]
+  before_action :set_parents, only: [:new, :create, :edit, :update]
 
   # 商品一覧表示
   def index
@@ -50,6 +51,22 @@ class ItemsController < ApplicationController
   def purchase
   end
 
+  # カテゴリー
+  def category
+    # カテゴリーの非同期通信
+    respond_to do |format|
+      format.html { redirect_to :root}
+      format.json  do
+        if params[:parent_id]
+          # 子カテゴリーを@childrenに代入
+          @childrens = Category.find(params[:parent_id]).children
+        elsif params[:children_id]
+          @grandChilds = Category.find(params[:children_id]).children
+        end
+      end
+    end
+  end
+
   # クラス外から呼び出すことのできないメソッド
   private
 
@@ -66,5 +83,10 @@ class ItemsController < ApplicationController
   # image_attributesに_destroyキーを追加。fields_forから送られてくるこのキーを持った情報を頼りにrailsが子モデルの更新・削除を行う。
   def item_update_params
     params.require(:item).permit(:name, :explain, :status_id, :delivery_fee, :region, :days, :price, :seller_id, :buyer_id, :auction_id, :category_id, brands_attributes: [:name], images_attributes: [:image, :id, :_destroy]).merge(seller_id: current_user.id)
+  end
+
+  def set_parents
+  # Categoryテーブルのancestryがnil（親要素の値)
+  @parents = Category.where(ancestry: nil)
   end
 end

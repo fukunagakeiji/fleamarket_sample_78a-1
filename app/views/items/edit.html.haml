@@ -102,14 +102,6 @@
           .ListingMain__entire__menu__form__list#parent_box
             = f.collection_select :category_id, Category.all.limit(13), :id, :name,{prompt:"選択してください"}, {class: "ListingMain__entire__menu__form__list__input", id: "parent_category"}
 
-          // 子カテゴリー
-          .ListingMain__entire__menu__form__children#children_box
-            -#親カテゴリー選択によって子カテゴリー表示
-          // 孫カテゴリー
-          .LisitngMain__entire__menu__form__grandchildren#grandchildren_box
-            -#子カテゴリー選択によって孫カテゴリー表示
-
-
       .ListingMain__entire__menu__separation
 
       // ブランド
