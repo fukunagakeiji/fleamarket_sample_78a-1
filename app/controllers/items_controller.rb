@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :update]
+  before_action :set_item, only: [:edit, :update, :destroy]
   before_action :set_parents, only: [:new, :create, :edit, :update]
 
   # 商品一覧表示
@@ -26,10 +26,10 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     # 商品の保存に成功した場合、保存に失敗した場合で処理を分岐
     if @item.save
-      redirect_to root_path 
+      redirect_to root_path, notice: "商品が出品されました"
     else
       @item.images.new
-      render :new
+      render :new, notice: "商品が出品されませんでした"
     end
   end
 
@@ -40,10 +40,19 @@ class ItemsController < ApplicationController
   # 商品編集のupdate(実際のデータ更新)
   def update
     if @item.update(item_update_params)
-      redirect_to root_path
+      redirect_to root_path, notice: "商品の編集が完了しました"
     else
       @item.images.new
-      render :edit
+      render :edit, notice: "商品の編集に失敗しました"
+    end
+  end
+
+  # 商品削除
+  def destroy
+    if current_user.id == @item.seller_id && @item.destroy
+      redirect_to root_path, notice: "商品が削除されました"
+    else
+      render :index, notice: "商品の削除に失敗しました"
     end
   end
 
