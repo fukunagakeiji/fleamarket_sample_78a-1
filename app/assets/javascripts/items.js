@@ -84,7 +84,6 @@ $(document).on('turbolinks:load', ()=> {
         fileReader.onload = function(e) {
           $(`[data-index-id = "${target_index}"]`).append($('<img>').attr({
             src: e.target.result,
-            width: "150px",
             height: "115px",
             class: "preview",
           }));
@@ -92,4 +91,8 @@ $(document).on('turbolinks:load', ()=> {
       };
     });
   });
+  // // もし、画像が5枚ある場合はカメラアイコンを非表示にする
+  // $(function() {
+
+  // });
 });
