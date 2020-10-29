@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', ()=> {
     const html = `<div data-index-id="${index}" class="js-file_group">
                       <input class="js-file" type="file"
                       name="item[images_attributes][${index}][image]"
-                      id="item_images_attributes_${fileIndex[0]}_image"><br>
+                      id="item_images_attributes_${fileIndex[0]}_image">
                       <div class="js-remove">削除</div>
                     </div>`;
     return html;
@@ -76,20 +76,16 @@ $(document).on('turbolinks:load', ()=> {
       // 画像ファイルのURLを取得
       fileReader.readAsDataURL(file);
       // 該当indexを持つimgタグがあれば取得して変数imgに入れる（画像変更の処理）
-      console.log('target_image:', target_image);
       if (img = $(`img[data-index = "${target_image}"]`)[0]) {
         img.setAttribute('src', blobUrl);
-      } else { // 新規画像追加の処理
-        // $('#previews').append(buildFileField(fileIndex[0]));
-        // fileIndex.shift();
-        // // 末尾の数に1を足した数を追加
-        // fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+      } else {
         // 画像の読み込みが完了したらプレビュー表示
         const target_index = $('.js-file').length - 2
         fileReader.onload = function(e) {
           $(`[data-index-id = "${target_index}"]`).append($('<img>').attr({
             src: e.target.result,
             width: "150px",
+            height: "115px",
             class: "preview",
           }));
         };
