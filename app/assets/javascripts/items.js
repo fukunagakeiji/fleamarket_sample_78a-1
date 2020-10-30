@@ -70,28 +70,30 @@ $(document).on('turbolinks:load', ()=> {
       const blobUrl = window.URL.createObjectURL(file);
       // FileReaderは選択した画像を読み込むためのオブジェクト
       const fileReader = new FileReader();
+      console.log(fileReader)
       // 画像のプレビュー要素を取得
       const target = $(this).parent();
+      console.log(target)
       const target_image = target.data("index-id");
+      console.log(target_image)
       // 画像ファイルのURLを取得
       fileReader.readAsDataURL(file);
       // 該当indexを持つimgタグがあれば取得して変数imgに入れる（画像変更の処理）
       if (img = $(`img[data-index = "${target_image}"]`)[0]) {
+        console.log(img)
         img.setAttribute('src', blobUrl);
       } else {
         // 画像の読み込みが完了したらプレビュー表示
-        const target_index = $('.js-file').length - 2
-        fileReader.onload = function(e) {
-          $(`[data-index-id = "${target_index}"]`).append($('<img>').attr({
-            src: e.target.result,
-            height: "115px",
-            class: "preview",
-          }));
-        };
+        $(this).parent().append($('<img>').attr({
+          src: blobUrl,
+          width: "115px",
+          height: "115px",
+          class: "preview",
+        }));
       };
     });
   });
-  // // もし、画像が5枚ある場合はカメラアイコンを非表示にする
+  // // プレビュー画像がある時にだけ削除ボタンを表示
   // $(function() {
 
   // });

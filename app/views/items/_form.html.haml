@@ -46,11 +46,11 @@
                       = i.check_box :_destroy, data: {index: i.index}, class: "items-image"
                       = image_tag i.object.image.url, data: {index: i.index}, class: "item-image__image"
                     
-                // 新規画像追加のためのファイル
-                .js-file_group{data: {index: {id: @item.images.length}}}
-                  %input.js-file{type: "file", name: "item[images_attributes][#{@item.images.length}][image]", id: "item_images_attributes_#{@item.images.length}_image"}
-                    %p.js-remove
-                      削除
+              // 新規画像追加のためのファイル
+              .js-file_group{data: {index: {id: @item.images.length}}}
+                %input.js-file{type: "file", name: "item[images_attributes][#{@item.images.length}][image]", id: "item_images_attributes_#{@item.images.length}_image"}
+                  %p.js-remove
+                    削除
 
       .ListingMain__entire__menu__separation
         
