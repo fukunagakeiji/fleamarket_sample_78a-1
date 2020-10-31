@@ -114,32 +114,29 @@
                 max-width: 100px;
                 overflow: hidden;
                 .js-file {
-                  //width: 0;
-                  // overflow: visible;
-                  // display: block;
-                  // position: relative;
-                  // top: -8px;
-                  // font-size: 0;
+                  width: 0;
+                  overflow: visible;
+                  display: block;
+                  position: relative;
+                  top: -8px;
+                  font-size: 0;
                 }
-              //   // 削除ボタン
-              //   .js-remove {
-              //     cursor: pointer;
-              //     color: rgb(0, 149, 238);
-              //     margin-bottom: 8px;
-              //     border-color: rgb(245, 245, 245);
-              //     border-width: 1px;
-              //     border-style: dashed;
-              //     border-color: rgb(245, 245, 245);
-              //     background-color: rgb(245, 245, 245);
-              //     flex-grow: 1;
-              //   }
+                // 削除ボタン
+                .js-remove {
+                  cursor: pointer;
+                  color: rgb(0, 149, 238);
+                  margin-bottom: 8px;
+                  border-color: rgb(245, 245, 245);
+                  border-width: 1px;
+                  border-style: dashed;
+                  border-color: rgb(245, 245, 245);
+                  background-color: rgb(245, 245, 245);
+                  flex-grow: 1;
+                 }
               }
-              // .js-file_group:last-of-type {
-              //   display: none;
-              // }
-              // .js-remove:last-of-type {
-              //   display: none;
-              // }
+              >.js-file_group:last-of-type {
+                display: none;
+              }
             }
           }
         }

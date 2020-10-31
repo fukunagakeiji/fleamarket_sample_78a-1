@@ -70,17 +70,13 @@ $(document).on('turbolinks:load', ()=> {
       const blobUrl = window.URL.createObjectURL(file);
       // FileReaderは選択した画像を読み込むためのオブジェクト
       const fileReader = new FileReader();
-      console.log(fileReader)
       // 画像のプレビュー要素を取得
       const target = $(this).parent();
-      console.log(target)
       const target_image = target.data("index-id");
-      console.log(target_image)
       // 画像ファイルのURLを取得
       fileReader.readAsDataURL(file);
       // 該当indexを持つimgタグがあれば取得して変数imgに入れる（画像変更の処理）
       if (img = $(`img[data-index = "${target_image}"]`)[0]) {
-        console.log(img)
         img.setAttribute('src', blobUrl);
       } else {
         // 画像の読み込みが完了したらプレビュー表示
@@ -93,8 +89,35 @@ $(document).on('turbolinks:load', ()=> {
       };
     });
   });
-  // // プレビュー画像がある時にだけ削除ボタンを表示
-  // $(function() {
+  // もし、画像が5枚選択されていればカメラアイコンを非表示にする
+  $('#image-box').on('change', '.js-file', function() {
+    const image_class = $('.preview').length
+    if (image_class >= 5) {
+      $('.ListingMain__entire__menu__list__field__display__content').hide();
+    } else {
+      // 画像が5つより少なければカメラアイコンを表示する
+      $('.ListingMain__entire__menu__list__field__display__content').show();
+    }
+  });
 
-  // });
+  // もし、画像が5枚選択されていればカメラアイコンを非表示にする
+  $('#image-box').on('click', '.js-remove', function() {
+    const image_class = $('.preview').length
+    if (image_class >= 5) {
+      $('.ListingMain__entire__menu__list__field__display__content').hide();
+    } else {
+      // 画像が5つより少なければカメラアイコンを表示する
+      $('.ListingMain__entire__menu__list__field__display__content').show();
+    }
+  });
+  // もし、編集ページ初回読み込みの際にすでに画像が5枚以上あればカメラアイコンを非表示にする
+  $(function() {
+    const image_class = $('.preview').length
+    if (image_class >= 5) {
+      $('.ListingMain__entire__menu__list__field__display__content').hide();
+    } else {
+      // 画像が5つより少なければカメラアイコンを表示する
+      $('.ListingMain__entire__menu__list__field__display__content').show();
+    }
+  });
 });
