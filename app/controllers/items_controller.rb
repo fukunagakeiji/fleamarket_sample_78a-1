@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :update, :destroy]
+  before_action :set_item, only: [:edit, :update, :destroy, :purchase]
   before_action :set_parents, only: [:new, :create, :edit, :update]
 
   # 商品一覧表示
@@ -56,8 +56,20 @@ class ItemsController < ApplicationController
     end
   end
 
-  # 商品購入
+  # 商品購入ページ
   def purchase
+    @contact_information = ContactInformation.find_by(user_id: current_user.id)
+    @contact_information_prefecture = Prefecture.find(@contact_information.prefecture_id)
+  end
+
+  # クレジットカード登録(payjp)
+  def pay
+    Payjp.api_key = 'sk_test_92e017bea9f22bf617d74e26'
+    Payjp::Charge.create(
+    amount: 3500, # 決済する値段
+    card: params['payjp-token'],
+    currency: 'jpy'
+    )
   end
 
   # カテゴリー
@@ -95,7 +107,12 @@ class ItemsController < ApplicationController
   end
 
   def set_parents
-  # Categoryテーブルのancestryがnil（親要素の値)
-  @parents = Category.where(ancestry: nil)
+    # Categoryテーブルのancestryがnil（親要素の値)
+    @parents = Category.where(ancestry: nil)
+  end
+
+  # 配送先の情報
+  def contact_information_params
+    params.permit(:destination_family_name, :destination_first_name, :post_code, :prefecture_id, :city, :house_number, :building_name).merge(user_id: current_user.id)
   end
 end

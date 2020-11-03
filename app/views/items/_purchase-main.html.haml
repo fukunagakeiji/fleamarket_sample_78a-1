@@ -11,22 +11,24 @@
     .PurchaseMain__content__product
       .PurchaseMain__content__product__goods
         .PurchaseMain__content__product__goods__picture
-          = image_tag("pict/mgg-vitchakorn-98Xi5vMGKck-unsplash.jpg", alt: "パスタ", class: "PurchaseMain__content__product__goods__picture--image")
+          = image_tag @item.images[0].image.url, alt: "パスタ", class: "PurchaseMain__content__product__goods__picture--image"
         .PurchaseMain__content__product__goods__text
           %p.PurchaseMain__content__product__goods__text__name
-            テスト1
+            = @item.name
           .PurchaseMain__content__product__goods__text__cash
             %p.PurchaseMain__content__product__goods__text__cash--postage
               送料込み(税込)
             %p.PurchaseMain__content__product__goods__text__cash--total
-              ¥10000
+              ¥
+              = @item.price
 
     // 支払い金額
     .PurchaseMain__content__money
       %p.PurchaseMain__content__money__payment
         支払い金額
       %p.PurchaseMain__content__money__sum
-        ¥10000
+        ¥
+        = @item.price
 
     // 支払い方法
     .PurchaseMain__content__way
@@ -46,11 +48,16 @@
             変更する
       .PurchaseMain__content__address__userinfo
         %p.PurchaseMain__content__address__userinfo--PurchaseMain__content__address__delivery
-          〒 000-0000
+          〒
+          = @contact_information.post_code
         %p.PurchaseMain__content__address__userinfo--residence
-          福岡県福岡市中央区天神1-1-1
+          = @contact_information_prefecture.name
+          = @contact_information.city
+          = @contact_information.house_number
+          = @contact_information.building_name
         %p.PurchaseMain__content__address__userinfo--name
-          田中 太郎
+          = @contact_information.destination_family_name
+          = @contact_information.destination_first_name
 
 
 
@@ -63,4 +70,6 @@
           支払い方法の入力を完了してください。
         .PurchaseMain__content__purchase__announcement__done
           = button_tag type: "submit", class: "PurchaseMain__content__purchase__announcement__done--btns" do
-            購入する
+            = form_with action: :pay, method: :post do
+              :plain
+              %script{type: "text/javascript", src: "https://checkout.pay.jp", class:"payjp-button", "data-text": "購入する", "data-key": "pk_test_a634a10dfdcba3782d23794b"}
