@@ -111,8 +111,4 @@ class ItemsController < ApplicationController
     @parents = Category.where(ancestry: nil)
   end
 
-  # 配送先の情報
-  def contact_information_params
-    params.permit(:destination_family_name, :destination_first_name, :post_code, :prefecture_id, :city, :house_number, :building_name).merge(user_id: current_user.id)
-  end
 end
