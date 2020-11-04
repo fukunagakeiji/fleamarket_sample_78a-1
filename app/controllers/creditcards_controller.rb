@@ -5,7 +5,8 @@ class CreditcardsController < ApplicationController
 
   # クレジットカード登録画面の表示(payjp)
   def new
-    @card = Creditcard.new
+    card = Creditcard.where(user_id: current_user.id)
+    #@card = Creditcard.new
   end
 
   # クレジットカードの保存
@@ -14,7 +15,7 @@ class CreditcardsController < ApplicationController
     if params['payjp-token'].blank?
       render :new
     else
-      customer = Payjp::Charge.create(
+      customer = Payjp::Customer.create(
         card: params['payjp-token'],
         metadata: {user_id: current_user.id}
       )

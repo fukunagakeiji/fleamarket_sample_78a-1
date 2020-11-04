@@ -7,11 +7,11 @@
     %section.Creditcard__main
       %h2.Creditcard__box__header クレジットカード情報入力
       .Creditcard__box__form
-        = form_with url: creditcards_path, method: :post, local: true do
+        = form_with url: creditcards_path, method: :post, local: true, name: "inputForm", id: "card_form" do
           .Creditcard__box__form__menu
             %p.Creditcard__box__form__menu--quantity カード番号
             %span.Creditcard__box__form__menu--mandatory 必須
-          = text_field_tag "number", "", class: "Creditcard__box__form__menu__number", placeholder: "半角数字のみ", maxlength: "16", id: "card_id"
+          = text_field_tag "number", "", class: "Creditcard__box__form__menu__number", placeholder: "半角数字のみ", maxlength: "16", id: "card_number"
           // カード会社のロゴをいれる
           .Creditcard__box__form__images
             -# = image_tag '0.5x/visa.jpg', class: 'credit-card-image'
