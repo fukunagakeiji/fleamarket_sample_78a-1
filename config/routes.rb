@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   root 'items#index'
   resources :items do
+    resources :payments, only: [:new, :create]
     # itemsのidを取得するためにネストでpurchaseを記載(idがつくためmemberで)後でmemberに変更
     collection do
       get "category"
