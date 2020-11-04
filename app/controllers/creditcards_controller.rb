@@ -16,8 +16,7 @@ class CreditcardsController < ApplicationController
     else
       customer = Payjp::Charge.create(
         card: params['payjp-token'],
-        amount: 3500, # 決済する値段
-        currency: 'jpy'
+        metadata: {user_id: current_user.id}
       )
       @card = Creditcard.new(
         user_id: current_user.id,
