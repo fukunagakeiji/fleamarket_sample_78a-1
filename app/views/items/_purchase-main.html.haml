@@ -65,11 +65,7 @@
         %p.PurchaseMain__content__purchase__announcement__warning
           支払い方法の入力を完了してください。
         .PurchaseMain__content__purchase__announcement__done
+        // もし、ログインしているユーザーのidと出品者のidが等しくなければ購入ボタンを表示
+        - if user_signed_in? && current_user.id != @item.seller_id
           = form_with url:pay_item_path, method: :post do |f|
             = f.submit "購入する", class: "PurchaseMain__content__purchase__announcement__done--btns"
-          -# = button_tag type: "submit", class: "PurchaseMain__content__purchase__announcement__done--btns" do
-          -#   購入する
-          -# = form_with action: :pay, method: :post do
-          -#   :plain
-          -#   %script{src: "https://checkout.pay.jp", class:"payjp-button", "data-text": "購入する", "data-key": "pk_test_a634a10dfdcba3782d23794b"}
-          
