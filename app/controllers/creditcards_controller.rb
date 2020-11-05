@@ -6,7 +6,6 @@ class CreditcardsController < ApplicationController
   # クレジットカード登録画面の表示(payjp)
   def new
     card = Creditcard.where(user_id: current_user.id)
-    #@card = Creditcard.new
   end
 
   # クレジットカードの保存
