@@ -3,39 +3,37 @@
 .container
   .container__product-details
     %h1.container__product-details__product-name
-      /= @product.title
-      テスト
+      = @item.name
     .container__product-details__main
       .container__product-details__main__images
         .container__product-details__main__images__display
           %ul.container__product-details__main__images__display__top
             %li.container__product-details__main__images__display__top__slide-image
-              = image_tag("pict/mike-PxJ9zkM2wdA-unsplash.jpg",  class: "picture")
-          %ul.container__product-details__main__images__display__down
-            %li.container__product-details__main__images__display__down__thumbnail-image
-              = image_tag("pict/mike-PxJ9zkM2wdA-unsplash.jpg", class: "picture")
+              = image_tag(@item.images[0].image.url,  class: "picture")
+          -@item.images.each do |image|
+            .container__product-details__main__images__display__down
+              .container__product-details__main__images__display__down__thumbnail-image
+                = image_tag(image.image.url, class: "picture")
       %table.container__product-details__main__detail
         %tbody
           %tr
             %th
               出品者
             %td
-              /= link_to @product.user.nickname, ""
-              もつ太郎
+              = link_to @item.seller.name, ""
           %tr
             %th
               カテゴリー
             %td.category
               = link_to "" do
                 .category
+                  = @item.category.name
                 /  %span
                 /    = 親カテゴリーのインスタンス
-                food
               = link_to "" do
                 .category
                 /    %span
                 /      = 子カテゴリーのインスタンス
-                nabe
               = link_to "" do
                 .category
                 /    %span
@@ -47,50 +45,47 @@
               サンプル
           %tr
             %th
-              商品のサイズ
-            %td
-              /= @item.◯◯
-              意外と大きい
-          %tr
-            %th
               商品の状態
             %td
-              /= @item.◯◯
-              熱々
+              = @item.status.status
           %tr
             %th
               配送料の負担
             %td
-              /= @item.◯◯
-              お客様負担
+              = @item.deliveryfee.delivery_fee
           %tr
             %th
               配送元地域
             %td
-              /= link_to @item.◯◯ ""
-              =link_to "大名", "", class: "Link"
+              =link_to @item.prefecture.name, "", class: "Link"
           %tr
             %th
               発送日の目安
             %td
-              /= @item.◯◯
-              30分以内
+              = @item.shippingdays.days
 
     .container__product-details__price
       %span.container__product-details__price__amount
         ¥
-        /= @item.◯◯
-        1490
+        = @item.price
       %span.container__product-details__price__tax
         (税込)
       %span.container__product-details__price__delivery-fee
         送料込み
     .container__product-details__message
-      if文でボタンやらを表示（購入ボタンやら）
+      - if @item.buyer_id.present?
+        = link_to root_path do
+          売り切れました
+      - elsif user_signed_in?
+        - unless current_user.id == @item.seller_id
+          = link_to purchase_item_path(@item) do
+            商品購入
+      - else
+        = link_to user_session_path do
+          ログインがまだな方はこちらからお願いします
     .container__product-details__product-description
       %p.container__product-details__product-description__inner
-        /= @item.◯◯
-        説明文をだらだらと表示
+        = @item.explain
     .container__product-details__buttons
       .container__product-details__buttons__btn
         %button.container__product-details__buttons__btn__star
@@ -128,24 +123,26 @@
   .container__other-products
     .container__other-products__same-category
       %h2.container__other-products__same-category__title
-        = link_to "foodをもっと見る", "", class: "container__other-products__same-category__title__link"
+        = link_to "#{@item.category.name}をもっと見る", "", class: "container__other-products__same-category__title__link"
       .container__other-products__same-category__products
         = link_to items_path, class: "container__other-products__same-category__products__list__goods" do
-          .container__other-products__same-category__products__list__goods--img
-            = image_tag("pict/mike-PxJ9zkM2wdA-unsplash.jpg", class: "picture")
-          .container__other-products__same-category__products__list__goods--body
-            %h3.container__other-products__same-category__products__list__goods--body.name
-              ハンバーガー
-            .container__other-products__same-category__products__list__goods--body.details
-              %ul
-                %li
-                  780
-                  円
-                %li
-                  = icon("fas", "fa-star", class: "fa")
-                  0
-              %p
-                (税込み)
+          -@item.images.each do |item|
+            .container__other-products__same-category__products__list__goods__item
+              .container__other-products__same-category__products__list__goods__item--img
+                = image_tag(@item.images[0].image.url, class: "picture")
+              .container__other-products__same-category__products__list__goods__item--body
+                %h3.container__other-products__same-category__products__list__goods__item--body.name
+                  = @item.name
+                .container__other-products__same-category__products__list__goods__item--body.details
+                  %ul
+                    %li
+                      = @item.price
+                      円
+                    %li
+                      = icon("fas", "fa-star", class: "fa")
+                      0
+                  %p
+                    (税込み)
         /- @products.each do |product|
         /  .container__other-products__same-category__products__product
         /    = link_to product_path(product.id), class:".container__other-products__same-category__products__product__link" do

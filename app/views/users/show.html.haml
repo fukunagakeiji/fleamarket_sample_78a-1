@@ -46,7 +46,9 @@
         %ul.Setting  
           %li.Setting__item 会員情報の編集
           %li.Setting__item お届け先住所の編集
-          %li.Setting__item お支払い情報の登録/確認/編集
+          %li.Setting__item クレジットカードの登録
+          %li.Setting__item クレジットカードの編集
+          %li.Setting__item クレジットカードの削除
           %li.Setting__logout
             = link_to destroy_user_session_path, method: :delete, class: 'Link' do
               ログアウト
@@ -68,52 +70,22 @@
         .Center__field__rightfield__items
           .Center__field__rightfield__items__lists
             = link_to item_path, class: "Center__field__rightfield__items__lists__goods" do
-              .Center__field__rightfield__items__lists--img
-                = image_tag("pict/mike-PxJ9zkM2wdA-unsplash.jpg", alt: "ハンバーガー", class: "Center__field__rightfield__items__lists--img picture")
-              .Center__field__rightfield__items__lists--body
-                %h3.Center__field__rightfield__items__lists--body.name
-                  テスト1
-                .Center__field__rightfield__items__lists--body.details
-                  %ul
-                    %li
-                      10000円
-                    %li
-                      = icon("fas", "fa-star", class: "fa")
-                      0
-                  %p
-                    (税込み)
-          .Center__field__rightfield__items__lists
-            = link_to root_path, class: "Center__field__rightfield__items__lists__goods" do
-              .Center__field__rightfield__items__lists--img
-                = image_tag("pict/mike-PxJ9zkM2wdA-unsplash.jpg", alt: "ハンバーガー", class: "Center__field__rightfield__items__lists--img picture")
-              .Center__field__rightfield__items__lists--body
-                %h3.Center__field__rightfield__items__lists--body.name
-                  テスト2
-                .Center__field__rightfield__items__lists--body.details
-                  %ul
-                    %li
-                      7500円
-                    %li
-                      = icon("fas", "fa-star", class: "fa")
-                      0
-                  %p
-                    (税込み)
-          .Center__field__rightfield__items__lists
-            = link_to root_path, class: "Center__field__rightfield__items__lists__goods" do
-              .Center__field__rightfield__items__lists--img
-                = image_tag("pict/mike-PxJ9zkM2wdA-unsplash.jpg", alt: "ハンバーガー", class: "Center__field__rightfield__items__lists--img picture")
-              .Center__field__rightfield__items__lists--body
-                %h3.Center__field__rightfield__items__lists--body.name
-                  テスト3
-                .Center__field__rightfield__items__lists--body.details
-                  %ul
-                    %li
-                      5000円
-                    %li
-                      = icon("fas", "fa-star", class: "fa")
-                      0
-                  %p
-                    (税込み)
+              -@item.each do |item|
+                .Center__field__rightfield__items__lists__goods__item
+                  .Center__field__rightfield__items__lists__goods__item--img
+                    = image_tag(item.images[0].image.url, class: "Center__field__rightfield__items__lists--img picture")
+                  .Center__field__rightfield__items__lists__goods__item--name
+                    = item.name
+                  .Center__field__rightfield__items__lists__goods__item--details
+                    %ul.Center__field__rightfield__items__lists__goods__item--detail
+                      %li
+                        = item.price
+                        円
+                      %li
+                        = icon("fas", "fa-star", class: "fa")
+                        0
+                    %p
+                      (税込み)
 
   // トップページのフッター 
   .Bottom
