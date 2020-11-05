@@ -69,8 +69,8 @@
           最近出品した商品
         .Center__field__rightfield__items
           .Center__field__rightfield__items__lists
-            = link_to item_path, class: "Center__field__rightfield__items__lists__goods" do
-              -@item.each do |item|
+            -@item.each do |item|
+              = link_to item_path(item.id), class: "Center__field__rightfield__items__lists__goods", method: :get do
                 .Center__field__rightfield__items__lists__goods__item
                   .Center__field__rightfield__items__lists__goods__item--img
                     = image_tag(item.images[0].image.url, class: "Center__field__rightfield__items__lists--img picture")
