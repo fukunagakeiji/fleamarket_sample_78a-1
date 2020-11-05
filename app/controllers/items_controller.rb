@@ -78,8 +78,6 @@ class ItemsController < ApplicationController
   end
 
   def set_categories
-    @categories      = Category.all
-    #@bigcategories   = Bigcategory.all
-    #@smallcategories = Smallcategory.all
+    @categories = Category.all
   end
 end
