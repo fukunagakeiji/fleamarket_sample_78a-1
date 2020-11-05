@@ -65,11 +65,10 @@ class ItemsController < ApplicationController
   # クレジットカード登録(payjp)
   def pay
     Payjp.api_key = 'sk_test_92e017bea9f22bf617d74e26'
-    Payjp::Charge.create(
-    amount: 3500, # 決済する値段
-    card: params['payjp-token'],
-    currency: 'jpy'
-    )
+    # Payjp::Charge.create(
+    # card: params['payjp-token'],
+    # )
+    redirect_to root_path
   end
 
   # カテゴリー
