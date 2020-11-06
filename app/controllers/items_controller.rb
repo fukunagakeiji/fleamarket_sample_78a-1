@@ -17,14 +17,14 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
-    @user = User.find(params[:id])
-    @image = Image.find(params[:id])
   end
 
   def destroy
-    @item.destroy
-    redirect_to root_path
+    if @item.destroy
+      redirect_to root_path, notice: "削除しました"
+    else
+      render :edit
+    end
   end
 
   # 商品の保存
