@@ -18,5 +18,5 @@ Rails.application.routes.draw do
       post "pay", to: 'items#pay'
     end
   end
-  resources :creditcards, only: [:new, :create]
+  resources :creditcards, only: [:new, :create, :destroy]
 end

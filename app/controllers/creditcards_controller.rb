@@ -30,4 +30,9 @@ class CreditcardsController < ApplicationController
       end
     end
   end
+
+  # クレジットカードの削除
+  def destroy
+  end
+
 end
