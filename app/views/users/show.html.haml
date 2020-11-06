@@ -51,7 +51,7 @@
               クレジットカードの登録
           %li.Setting__item クレジットカードの変更
           %li.Setting__item
-            = link_to creditcard_path, method: :delete do
+            = link_to creditcard_path(current_user.creditcard.id), method: :delete do
               クレジットカードの削除
           %li.Setting__logout
             = link_to destroy_user_session_path, method: :delete, class: 'Link' do
