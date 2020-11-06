@@ -29,7 +29,7 @@ describe Creditcard do
         @another_card = create(:creditcard)
         @creditcard.user_id = @another_card.user_id
         @creditcard.valid?
-        expect(@creditcard.errors.full_messages).to include("Userはすでに存在します")
+        expect(@creditcard.errors.full_messages).to include("カード情報が正しくありません")
       end
       it "カスタマーIDがないと登録できない" do
         @creditcard.customer_id = ''
