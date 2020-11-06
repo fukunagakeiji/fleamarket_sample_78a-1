@@ -22,9 +22,9 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :explain, presence: true
   validates :status_id, presence: true
-  validates :delivery_fee, presence: true
-  validates :region, presence: true
-  validates :days, presence: true
+  validates :deliveryfee_id, presence: true
+  validates :prefecture_id, presence: true
+  validates :shippingdays_id, presence: true
   validates :price, presence: true
   validates :images, presence: true
 end

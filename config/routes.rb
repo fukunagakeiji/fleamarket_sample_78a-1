@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :items do
     # itemsのidを取得するためにネストでpurchaseを記載(idがつくためmemberで)後でmemberに変更
-    collection do
+    member do
       get "category"
       get "purchase"
     end

@@ -1,7 +1,7 @@
 // もし、buyer_id(売却済みカラムのid)が空だったら
 - if item.buyer_id.nil?  
   .Main__container__productBox__productLists__list
-    = link_to purchase_items_path, class: "Main__container__productBox__productLists__list__goods" do
+    = link_to item_path(item.id), class: "Main__container__productBox__productLists__list__goods" do
       .Main__container__productBox__productLists__list--img
         = image_tag item.images[0].image.url, class: "Main__container__productBox__productLists__list--img picture"
       .Main__container__productBox__productLists__list--body
@@ -28,7 +28,7 @@
   // buyer_idが埋まっていたら売り切れを表示する
 - else
   .Main__container__productBox__productLists__list
-    = link_to purchase_items_path, class: "Main__container__productBox__productLists__list__goods" do
+    = link_to item_path(item.id), class: "Main__container__productBox__productLists__list__goods" do
       .Main__container__productBox__productLists__list--img
         = image_tag item.images[0].image.url, alt: "売り切れました", class: "Main__container__productBox__productLists__list--img picture"
       .Main__container__productBox__productLists__list--body

@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :update, :destroy]
-  before_action :set_parents, only: [:new, :create, :edit, :update]
+  before_action :set_item, only: [:edit, :update, :destroy, :show, :purchase]
+  before_action :set_categories, only: [:show]
+  before_action :set_parents, only: [:new, :create, :show, :edit, :update]
 
   # 商品一覧表示
   def index
@@ -17,8 +18,14 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.new
-    # @image = Image.find(params[:id])
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to root_path, notice: "削除しました"
+    else
+      render :edit
+    end
   end
 
   # 商品の保存
@@ -58,6 +65,8 @@ class ItemsController < ApplicationController
 
   # 商品購入
   def purchase
+    @contact_information = ContactInformation.find_by(user_id: current_user.id)
+    @contact_information_prefecture = Prefecture.find(@contact_information.prefecture_id)
   end
 
   # カテゴリー
@@ -82,7 +91,7 @@ class ItemsController < ApplicationController
   # ストロングパラメーターを使って、指定したキーを持つパラメーターのみを受け取るように制限
   def item_params
     # fields_forを利用して作成されたフォームから来る値は、○○s_attributes: [:××]という形でparamsに入る。○○は関連付く側のモデルの名前、××にはフォームに対応するカラムの名前が入る。
-    params.require(:item).permit(:name, :explain, :status_id, :delivery_fee, :region, :days, :price, :seller_id, :buyer_id, :auction_id, :category_id, brands_attributes: [:name], images_attributes: [:image]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :explain, :status_id, :deliveryfee_id, :prefecture_id, :shippingdays_id, :price, :seller_id, :buyer_id, :auction_id, :category_id, brands_attributes: [:name], images_attributes: [:image]).merge(seller_id: current_user.id)
   end
 
   def set_item
@@ -91,7 +100,11 @@ class ItemsController < ApplicationController
 
   # image_attributesに_destroyキーを追加。fields_forから送られてくるこのキーを持った情報を頼りにrailsが子モデルの更新・削除を行う。
   def item_update_params
-    params.require(:item).permit(:name, :explain, :status_id, :delivery_fee, :region, :days, :price, :seller_id, :buyer_id, :auction_id, :category_id, brands_attributes: [:name], images_attributes: [:image, :id, :_destroy]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :explain, :status_id, :deliveryfee_id, :prefecture_id, :shippingdays_id, :price, :seller_id, :buyer_id, :auction_id, :category_id, brands_attributes: [:name], images_attributes: [:image, :id, :_destroy]).merge(seller_id: current_user.id)
+  end
+
+  def set_categories
+    @categories = Category.all
   end
 
   def set_parents
