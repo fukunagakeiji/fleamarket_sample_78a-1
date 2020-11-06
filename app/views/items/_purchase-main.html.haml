@@ -11,7 +11,7 @@
     .PurchaseMain__content__product
       .PurchaseMain__content__product__goods
         .PurchaseMain__content__product__goods__picture
-          = image_tag @item.images[0].image.url, alt: "パスタ", class: "PurchaseMain__content__product__goods__picture--image"
+          = image_tag(@item.images[0].image.url, class: "PurchaseMain__content__product__goods__picture--image")
         .PurchaseMain__content__product__goods__text
           %p.PurchaseMain__content__product__goods__text__name
             = @item.name
@@ -19,7 +19,6 @@
             %p.PurchaseMain__content__product__goods__text__cash--postage
               送料込み(税込)
             %p.PurchaseMain__content__product__goods__text__cash--total
-              ¥
               = @item.price
 
     // 支払い金額
@@ -27,7 +26,6 @@
       %p.PurchaseMain__content__money__payment
         支払い金額
       %p.PurchaseMain__content__money__sum
-        ¥
         = @item.price
 
     // 支払い方法

@@ -131,7 +131,7 @@
       .ListingMain__entire__menu
         .ListingMain__entire__menu__form
           .ListingMain__entire__menu__form__list
-            = f.collection_select :delivery_fee, Deliveryfee.all, :id, :delivery_fee, {prompt: "選択してください"}, {class: "ListingMain__entire__menu__form__list__input"}
+            = f.collection_select :deliveryfee_id, Deliveryfee.all, :id, :delivery_fee, {prompt: "選択してください"}, {class: "ListingMain__entire__menu__form__list__input"}
 
       .ListingMain__entire__menu__separation
 
@@ -146,7 +146,7 @@
       .ListingMain__entire__menu
         .ListingMain__entire__menu__form
           .ListingMain__entire__menu__form__list
-            = f.collection_select :region, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "ListingMain__entire__menu__form__list__input"}
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "ListingMain__entire__menu__form__list__input"}
 
       .ListingMain__entire__menu__separation
 
@@ -161,7 +161,7 @@
       .ListingMain__entire__menu
         .ListingMain__entire__menu__form
           .ListingMain__entire__menu__form__list
-            = f.collection_select :days, Shippingdays.all, :id, :days, {prompt: "選択してください"}, {class: "ListingMain__entire__menu__form__list__input"}
+            = f.collection_select :shippingdays_id, Shippingdays.all, :id, :days, {prompt: "選択してください"}, {class: "ListingMain__entire__menu__form__list__input"}
 
       .ListingMain__entire__menu__separation
 

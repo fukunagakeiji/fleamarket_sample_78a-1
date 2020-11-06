@@ -71,9 +71,9 @@ ActiveRecord::Schema.define(version: 2020_09_16_185404) do
     t.string "name", null: false
     t.text "explain", null: false
     t.integer "status_id", null: false
-    t.string "delivery_fee", null: false
-    t.string "region", null: false
-    t.string "days", null: false
+    t.string "deliveryfee_id", null: false
+    t.string "prefecture_id", null: false
+    t.string "shippingdays_id", null: false
     t.string "price", null: false
     t.bigint "seller_id"
     t.bigint "buyer_id"
