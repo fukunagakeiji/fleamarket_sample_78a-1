@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show]
   root 'items#index'
-  resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
+  resources :items do
     # itemsのidを取得するためにネストでpurchaseを記載(idがつくためmemberで)後でmemberに変更
     member do
+      get "category"
       get "purchase"
     end
   end

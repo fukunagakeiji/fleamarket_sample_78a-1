@@ -19,7 +19,12 @@
             (税込み)
           // もし、ログインしているユーザーのidと出品者のidが等しければ編集ボタンを表示
           - if user_signed_in? && current_user.id == item.seller_id
-            = link_to "編集する", edit_item_path(item), class: "edit-function"
+            = link_to "編集する", edit_item_path(item), class: "edit-function", data: {"turbolinks" => false}
+
+          // もし、ログインしているユーザーのidと出品者のidが等しければ削除ボタンを表示
+          - if user_signed_in? && current_user.id == item.seller_id
+            = link_to "削除する", item_path(item), class: "delete-function", method: :delete
+
   // buyer_idが埋まっていたら売り切れを表示する
 - else
   .Main__container__productBox__productLists__list

@@ -3,8 +3,9 @@
 
 // 商品編集ページのメイン
 .item-image {
+  margin: 0 10px 0 0;
   &__image {
-    height: 100px;
+    height: 115px;
   }
 }
 
@@ -14,10 +15,17 @@
 
 .js__editRemove {
   display: flex;
-}
-
-.js-edit {
-  cursor: pointer;
+  .js-edit {
+    cursor: pointer;
+    color: rgb(0, 149, 238);
+    margin-bottom: 8px;
+    margin-right: 8px;
+    border-color: rgb(245, 245, 245);
+    border-width: 1px;
+    border-style: dashed;
+    background-color: rgb(245, 245, 245);
+    flex-grow: 1;
+  }
 }
 
 // 商品編集ページのフッター 

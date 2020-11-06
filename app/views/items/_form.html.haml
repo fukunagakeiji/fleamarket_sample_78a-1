@@ -1,8 +1,11 @@
-// 商品出品ページのメイン
+// 商品編集ページのヘッダー
+= render "new-header"
+
+// 商品編集ページのメイン
 .ListingMain
-  // 商品出品ページのメインの全体
+  // 商品編集ページのメインの全体
   .ListingMain__entire
-    // 商品出品ページの各項目
+    // 商品編集ページの各項目
     // 出品画像
     .ListingMain__entire__menu
     // form_withの引数(@itemのなかにItemモデルのインスタンスが入っている場合、Railsはそのクラス名から送信先を推定する)
@@ -19,19 +22,33 @@
       .ListingMain__entire__menu__list
         .ListingMain__entire__menu__list__field
           .ListingMain__entire__menu__list__field__display
+            
             // labelはフォーム部品と項目名（ラベル）を関連付ける
-            %label.ListingMain__entire__menu__list__field__display__content{for: "item_images_attributes_0_image"}
+            %label.ListingMain__entire__menu__list__field__display__content{for: "item_images_attributes_#{@item.images.length}_image"}
               // カメラのアイコン
               = icon("fas", "camera", class: "ListingMain__entire__menu__list__field__display__content--image")
               クリックしてファイルをアップロード
               // image-boxというidをつける。
             #image-box
-              // fields_forを使用することで、異なるモデルを編集できるようになる。
-              = f.fields_for :images, class: "ListingMain__entire__menu__list__field__display__content--file" do |i|
-                // 画像ファイルを送信する際の選択ボックスを生成
-                // i.indexとすることで、ビルドされた際に振られるindexを取得できる（これをカスタムデータとして持たせることで今後のJSの処理で要素を特定していく。）
-                .js-file_group{data: {index: {id: i.index}}}
-                  = i.file_field :image, class: "js-file"
+              .preview-edit#previews
+                // fields_forを使用することで、異なるモデルを編集できるようになる。
+                = f.fields_for :images, class: "ListingMain__entire__menu__list__field__display__content--file" do |i|
+                  // i.indexとすることで、ビルドされた際に振られるindexを取得できる（これをカスタムデータとして持たせることで今後のJSの処理で要素を特定していく。）
+                  .js-file_group{data: {index: {id: i.index}}}
+                    = i.file_field :image, class: "js-file conpilation"
+                    .js__editRemove
+                      %p.js-edit
+                        編集
+                      %p.js-remove
+                        削除
+                    - if i.object.persisted?
+                      // 保存済みの画像レコードを削除するためのチェックボックス(このチェックボックスをonにすることで、railsが該当レコードのidを検索し削除する)
+                      = i.check_box :_destroy, data: {index: i.index}, class: "items-image"
+                      = image_tag i.object.image.url, data: {index: i.index}, class: "item-image__image preview"
+                    
+              // 新規画像追加のためのファイル
+              .js-file_group{data: {index: {id: @item.images.length}}}
+                %input.js-file{type: "file", name: "item[images_attributes][#{@item.images.length}][image]", id: "item_images_attributes_#{@item.images.length}_image"}
                   %p.js-remove
                     削除
 
@@ -131,7 +148,7 @@
       .ListingMain__entire__menu
         .ListingMain__entire__menu__form
           .ListingMain__entire__menu__form__list
-            = f.collection_select :deliveryfee_id, Deliveryfee.all, :id, :delivery_fee, {prompt: "選択してください"}, {class: "ListingMain__entire__menu__form__list__input"}
+            = f.collection_select :delivery_fee, Deliveryfee.all, :id, :delivery_fee, {prompt: "選択してください"}, {class: "ListingMain__entire__menu__form__list__input"}
 
       .ListingMain__entire__menu__separation
 
@@ -146,7 +163,7 @@
       .ListingMain__entire__menu
         .ListingMain__entire__menu__form
           .ListingMain__entire__menu__form__list
-            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "ListingMain__entire__menu__form__list__input"}
+            = f.collection_select :region, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "ListingMain__entire__menu__form__list__input"}
 
       .ListingMain__entire__menu__separation
 
@@ -161,7 +178,7 @@
       .ListingMain__entire__menu
         .ListingMain__entire__menu__form
           .ListingMain__entire__menu__form__list
-            = f.collection_select :shippingdays_id, Shippingdays.all, :id, :days, {prompt: "選択してください"}, {class: "ListingMain__entire__menu__form__list__input"}
+            = f.collection_select :days, Shippingdays.all, :id, :days, {prompt: "選択してください"}, {class: "ListingMain__entire__menu__form__list__input"}
 
       .ListingMain__entire__menu__separation
 
@@ -183,10 +200,10 @@
 
       .ListingMain__entire__menu__separation
 
-      // 出品するボタン
+      // 変更するボタン
       .ListingMain__entire__menu
         .ListingMain__entire__menu__settlement
-          = f.submit "出品する", class: "ListingMain__entire__menu__settlement--exhibit"
+          = f.submit "変更する", class: "ListingMain__entire__menu__settlement--exhibit"
 
           // もどるボタン
           = link_to root_path, class: "ListingMain__entire__menu__settlement--return" do
@@ -201,3 +218,7 @@
             偽ブランド品や窃盗物などの販売は犯罪であり、法律により処罰される可能性があります。
             %br
             また、出品をもちまして加盟店規約に同士したことになります。
+
+
+// 商品編集ページのフッター
+= render "new-footer"
