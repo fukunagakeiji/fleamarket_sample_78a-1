@@ -84,14 +84,14 @@
         = link_to user_session_path do
           ログインがまだな方はこちらからお願いします
 
-    .Editdelete
+    .container__product-details__Editdelete
       // もし、ログインしているユーザーのidと出品者のidが等しければ編集ボタンを表示
       - if user_signed_in? && current_user.id == @item.seller_id
-        = link_to "編集する", edit_item_path(@item), class: "edit-function", data: {"turbolinks" => false}
+        = link_to "商品の編集", edit_item_path(@item), class: "container__product-details__Editdelete--edit", data: {"turbolinks" => false}
 
       // もし、ログインしているユーザーのidと出品者のidが等しければ削除ボタンを表示
       - if user_signed_in? && current_user.id == @item.seller_id
-        = link_to "削除する", item_path(@item), class: "delete-function", method: :delete
+        = link_to "この商品を削除する", item_path(@item), class: "container__product-details__Editdelete--delete", method: :delete
     .container__product-details__product-description
       %p.container__product-details__product-description__inner
         = @item.explain

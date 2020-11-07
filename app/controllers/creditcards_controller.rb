@@ -33,7 +33,11 @@ class CreditcardsController < ApplicationController
 
   # クレジットカードの削除
   def destroy
-    
+    if Creditcard.find(params[:id]).destroy
+      redirect_to root_path, notice: "クレジットカードを削除しました"
+    else
+      redirect_to controller: :users, action: :show, notice: "クレジットカードの削除ができていません"
+    end
   end
 
 end
