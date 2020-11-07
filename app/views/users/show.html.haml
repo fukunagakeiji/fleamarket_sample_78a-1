@@ -47,7 +47,7 @@
           %li.Setting__item 会員情報の編集
           %li.Setting__item お届け先住所の編集
           %li.Setting__item 
-            = link_to new_creditcard_path do
+            = link_to new_creditcard_path,  data: {"turbolinks" => false} do
               クレジットカードの登録
           %li.Setting__item クレジットカードの変更
           -# %li.Setting__item
