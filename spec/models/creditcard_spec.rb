@@ -34,12 +34,12 @@ describe Creditcard do
       it "カスタマーIDがないと登録できない" do
         @creditcard.customer_id = ''
         @creditcard.valid?
-        expect(@creditcard.errors.full_messages).to include("Customerを入力してください")
+        expect(@creditcard.errors.full_messages).to include("カード情報が正しくありません")
       end
       it "カードIDがないと登録できない" do
         @creditcard.card_id = ''
         @creditcard.valid?
-        expect(@creditcard.errors.full_messages).to include("Cardを入力してください")
+        expect(@creditcard.errors.full_messages).to include("カード情報が正しくありません")
       end
     end
   end
