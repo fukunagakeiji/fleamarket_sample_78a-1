@@ -28,14 +28,6 @@
       %p.PurchaseMain__content__money__sum
         = @item.price
 
-    // 支払い方法
-    .PurchaseMain__content__way
-      %p.PurchaseMain__content__way__text
-        支払い方法
-      %p.PurchaseMain__content__way__registration
-        = link_to "#", class: "PurchaseMain__content__way__registration--card" do
-          カードを登録してください
-
     // 配送先
     .PurchaseMain__content__address
       .PurchaseMain__content__address__delivery
@@ -60,8 +52,6 @@
     // 購入するボタン
     .PurchaseMain__content__purchase
       .PurchaseMain__content__purchase__announcement
-        %p.PurchaseMain__content__purchase__announcement__warning
-          支払い方法の入力を完了してください。
         .PurchaseMain__content__purchase__announcement__done
         // もし、ログインしているユーザーのidと出品者のidが等しくなければ購入ボタンを表示
         - if user_signed_in? && current_user.id != @item.seller_id && current_user.creditcard
