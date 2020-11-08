@@ -64,6 +64,6 @@
           支払い方法の入力を完了してください。
         .PurchaseMain__content__purchase__announcement__done
         // もし、ログインしているユーザーのidと出品者のidが等しくなければ購入ボタンを表示
-        - if user_signed_in? && current_user.id != @item.seller_id
+        - if user_signed_in? && current_user.id != @item.seller_id && current_user.creditcard
           = form_with url:pay_item_path, method: :post do |f|
             = f.submit "購入する", class: "PurchaseMain__content__purchase__announcement__done--btns"

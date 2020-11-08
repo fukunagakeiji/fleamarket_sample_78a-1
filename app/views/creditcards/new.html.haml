@@ -11,13 +11,6 @@
           %p.Creditcard__main__box__form__menu--quantity カード番号
           %span.Creditcard__main__box__form__menu--mandatory 必須
         = text_field_tag "number", "", class: "Creditcard__main__box__form__number", placeholder: "半角数字のみ", maxlength: "16", id: "card_number"
-        // カード会社のロゴをいれる
-        .Creditcard__main__box__form__images
-          -# = image_tag '0.5x/visa.jpg', class: 'credit-card-image'
-          -# = image_tag '0.5x/maru.jpg', class: 'credit-card-image'
-          -# = image_tag '0.5x/jcb.jpg', class: 'credit-card-image'
-          -# = image_tag '0.5x/diners.jpg', class: 'credit-card-image'
-          -# = image_tag '0.5x/discover.jpg', class: 'credit-card-image'
         .Creditcard__main__box__form__menu
           %p.Creditcard__main__box__form__menu--quantity 有効期限
           %span.Creditcard__main__box__form__menu--mandatory 必須
