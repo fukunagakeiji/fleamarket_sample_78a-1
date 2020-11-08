@@ -63,10 +63,26 @@ class ItemsController < ApplicationController
     end
   end
 
-  # 商品購入
+  # 商品購入ページ
   def purchase
     @contact_information = ContactInformation.find_by(user_id: current_user.id)
     @contact_information_prefecture = Prefecture.find(@contact_information.prefecture_id)
+  end
+
+  # クレジットカード登録(payjp)
+  def pay
+    item = Item.find(params[:id])
+    Payjp.api_key = 'sk_test_92e017bea9f22bf617d74e26'
+    Payjp::Charge.create(
+      amount: item.price.to_i,
+      customer: Creditcard.find_by(user_id: current_user.id).customer_id,
+      currency: 'jpy'
+    )
+    if item.update(buyer_id: current_user.id)
+      redirect_to root_path, notice: "購入が完了しました"
+    else
+      render :pay, notice: "購入が完了していません"
+    end
   end
 
   # カテゴリー
@@ -108,7 +124,8 @@ class ItemsController < ApplicationController
   end
 
   def set_parents
-  # Categoryテーブルのancestryがnil（親要素の値)
-  @parents = Category.where(ancestry: nil)
+    # Categoryテーブルのancestryがnil（親要素の値)
+    @parents = Category.where(ancestry: nil)
   end
+
 end

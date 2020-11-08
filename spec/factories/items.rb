@@ -3,9 +3,9 @@ FactoryBot.define do
     name          {Faker::Name}
     explain       {"aaa"}
     status_id     {"aaaa"}
-    delivery_fee  {"aaaaa"}
-    region        {Faker::Address}
-    days          {"aaaaaa"}
+    deliveryfee_id  {"aaaaa"}
+    prefecture_id  {Faker::Address}
+    shippingdays_id   {"aaaaaa"}
     price         {111}
     seller_id       {1}
     #category_id   {1}

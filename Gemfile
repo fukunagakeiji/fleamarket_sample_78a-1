@@ -99,3 +99,6 @@ gem "active_hash"
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
+# pay.jpの導入
+gem "payjp"

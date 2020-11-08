@@ -1,8 +1,6 @@
 // トップページのメイン
 .Main {
-  //height: calc(100vh - 300px);
   background: #f8f8f8;
-
   &__visual {
     height: 560px;
     background-image: image-url("pict/bg-mainVisual-pict_pc.jpg");
@@ -223,7 +221,7 @@
         &__list {
           width: 220px;
           display: inline-block;
-          //float: left;
+          margin-right: 15px;
           &__goods {
             background-color: #fff;
             display: inline-block;
@@ -252,27 +250,31 @@
             background-color: white;
             color: #333;
             line-height: 1.5;
-            padding: 16px;
+            height: 70px;
             .name {
               overflow: hidden;
               line-height: 1.5;
               font-size: 16px;
               text-align: left;
+              padding: 20px 0 0 20px;
             }
             .details {
               font-size: 16px;
+              padding: 20px 0 0 20px;
               ul {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 li {
-                  margin: 0;
                   padding: 0;
                 }
               }
               p {
                 font-size: 10px;
               }
+            }
+            .icon {
+              margin-right: 10px;
             }
           }
         }

@@ -34,24 +34,24 @@ describe Item do
     end
 
     # 5.配送料の負担についての入力がなければ出品できない
-    it "is invalid without a delivery_fee" do
-      item = build(:item, delivery_fee: nil)
+    it "is invalid without a deliveryfee_id" do
+      item = build(:item, deliveryfee_id: nil)
       item.valid?
-      expect(item.errors[:delivery_fee]).to include("を入力してください")
+      expect(item.errors[:deliveryfee_id]).to include("を入力してください")
     end
 
     # 6.発送元の地域についての入力がなければ出品できない
-    it "is invalid without a region" do
-      item = build(:item, region: nil)
+    it "is invalid without a prefecture_id" do
+      item = build(:item, prefecture_id: nil)
       item.valid?
-      expect(item.errors[:region]).to include("を入力してください")
+      expect(item.errors[:prefecture_id]).to include("を入力してください")
     end
 
     # 7.発送までの日数についての入力がなければ出品できない
-    it "is invalid without a days" do
-      item = build(:item, days: nil)
+    it "is invalid without a shippingdays_id" do
+      item = build(:item, shippingdays_id: nil)
       item.valid?
-      expect(item.errors[:days]).to include("を入力してください")
+      expect(item.errors[:shippingdays_id]).to include("を入力してください")
     end
 
     # 8.価格が入力されていなければ出品できない

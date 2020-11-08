@@ -46,7 +46,8 @@
             変更する
       .PurchaseMain__content__address__userinfo
         %p.PurchaseMain__content__address__userinfo--PurchaseMain__content__address__delivery
-          = "〒#{@contact_information.post_code}"
+          〒
+          = @contact_information.post_code
         %p.PurchaseMain__content__address__userinfo--residence
           = @contact_information_prefecture.name
           = @contact_information.city
@@ -56,15 +57,13 @@
           = @contact_information.destination_family_name
           = @contact_information.destination_first_name
 
-
-
-
-
     // 購入するボタン
     .PurchaseMain__content__purchase
       .PurchaseMain__content__purchase__announcement
         %p.PurchaseMain__content__purchase__announcement__warning
           支払い方法の入力を完了してください。
         .PurchaseMain__content__purchase__announcement__done
-          = button_tag type: "submit", class: "PurchaseMain__content__purchase__announcement__done--btns" do
-            購入する
+        // もし、ログインしているユーザーのidと出品者のidが等しくなければ購入ボタンを表示
+        - if user_signed_in? && current_user.id != @item.seller_id && current_user.creditcard
+          = form_with url:pay_item_path, method: :post do |f|
+            = f.submit "購入する", class: "PurchaseMain__content__purchase__announcement__done--btns"

@@ -46,9 +46,14 @@
         %ul.Setting  
           %li.Setting__item 会員情報の編集
           %li.Setting__item お届け先住所の編集
-          %li.Setting__item クレジットカードの登録
-          %li.Setting__item クレジットカードの編集
-          %li.Setting__item クレジットカードの削除
+          %li.Setting__item 
+            = link_to new_creditcard_path,  data: {"turbolinks" => false} do
+              クレジットカードの登録
+          %li.Setting__item クレジットカードの変更
+          - if current_user && current_user.creditcard
+            %li.Setting__item
+              = link_to creditcard_path(current_user.creditcard.id), method: :delete do
+                クレジットカードの削除
           %li.Setting__logout
             = link_to destroy_user_session_path, method: :delete, class: 'Link' do
               ログアウト
