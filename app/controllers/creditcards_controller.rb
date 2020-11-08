@@ -10,7 +10,7 @@ class CreditcardsController < ApplicationController
 
   # クレジットカードの保存
   def create
-    Payjp.api_key = 'sk_test_92e017bea9f22bf617d74e26'
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
       render :new
     else
