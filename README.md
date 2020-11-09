@@ -1,7 +1,7 @@
 # README
 
 
-#DB設計
+# DB設計
 ## usersテーブル
 
 |Column|Type|Options|
