@@ -71,7 +71,7 @@ class ItemsController < ApplicationController
 
   def pay
     item = Item.find(params[:id])
-    Payjp.api_key = 'sk_test_92e017bea9f22bf617d74e26'
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
       amount: item.price.to_i,
       customer: Creditcard.find_by(user_id: current_user.id).customer_id,
