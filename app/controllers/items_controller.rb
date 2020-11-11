@@ -69,7 +69,6 @@ class ItemsController < ApplicationController
     @contact_information_prefecture = Prefecture.find(@contact_information.prefecture_id)
   end
 
-  # クレジットカード登録(payjp)
   def pay
     item = Item.find(params[:id])
     Payjp.api_key = 'sk_test_92e017bea9f22bf617d74e26'
