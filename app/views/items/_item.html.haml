@@ -24,10 +24,18 @@
     = link_to item_path(item.id), class: "Main__container__productBox__productLists__list__goods" do
       .Main__container__productBox__productLists__list--img
         = image_tag item.images[0].image.url, alt: "売り切れました", class: "Main__container__productBox__productLists__list--img picture"
+        %p.Main__container__productBox__productLists__list--img--sold
+          SOLD
       .Main__container__productBox__productLists__list--body
         %h3.Main__container__productBox__productLists__list--body.name
-          売り切れました
+          = item.name
         .Main__container__productBox__productLists__list--body.details
           %ul
             %li
-              売り切れました
+              = item.price
+              円
+            %li.icon
+              = icon("fas", "fa-star", class: "fa")
+              0
+          %p
+            (税込み)
